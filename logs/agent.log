@@ -77,3 +77,876 @@
 2025-07-05 00:10:32.534 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'text/plain', given [*/*] and supported [text/plain, */*, application/json, application/*+json]
 2025-07-05 00:10:32.535 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing ["你好呀！👋 很高兴见到你～我是你的AI助手，有什么我可以帮你的吗？无论是聊天、答疑、查资料，还是写点东西、出个主意，我都在线等你哦～😊 请讲吧！"]
 2025-07-05 00:10:32.538 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-05 00:24:46.497 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 16 class path changes (0 additions, 8 deletions, 8 modifications)
+2025-07-05 00:24:46.500 [Thread-11] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-05 00:24:46.501 [tomcat-shutdown] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:24:46.506 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-05 00:24:46.506 [Thread-11] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:24:46.516 [Thread-11] WARN  o.s.beans.factory.support.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-07-05 00:24:46.517 [Thread-11] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-07-05 00:24:46.519 [Thread-11] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-07-05 00:24:46.901 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:24:46.902 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:24:46.902 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:24:47.715 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:24:47.718 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:24:47.718 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:24:47.722 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:24:47.765 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:24:47.765 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 856 ms
+2025-07-05 00:24:48.065 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2025-07-05 00:24:48.078 [restartedMain] DEBUG o.s.w.s.function.support.RouterFunctionMapping - 1 RouterFunction(s) in 'routerFunctionMapping'
+2025-07-05 00:24:48.082 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-07-05 00:24:48.088 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-07-05 00:24:48.095 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-07-05 00:24:48.110 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable tools capabilities, notification: true
+2025-07-05 00:24:48.110 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable resources capabilities, notification: true
+2025-07-05 00:24:48.111 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable prompts capabilities, notification: true
+2025-07-05 00:24:48.111 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable completions capabilities
+2025-07-05 00:24:48.174 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2025-07-05 00:24:48.177 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
+2025-07-05 00:24:48.177 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2025-07-05 00:24:48.177 [restartedMain] INFO  o.s.b.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-05 00:24:48.203 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-07-05 00:24:48.207 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:24:48.211 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-05 00:24:48.220 [restartedMain] INFO  com.example.agent.app.AgentApplication - Started AgentApplication in 1.561 seconds (process running for 910.593)
+2025-07-05 00:24:48.224 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-07-05 00:26:53.569 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 8 class path changes (0 additions, 0 deletions, 8 modifications)
+2025-07-05 00:26:53.570 [Thread-13] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-05 00:26:53.571 [tomcat-shutdown] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:26:53.580 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-05 00:26:53.581 [Thread-13] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:26:53.584 [Thread-13] WARN  o.s.beans.factory.support.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-07-05 00:26:53.584 [Thread-13] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2025-07-05 00:26:53.585 [Thread-13] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2025-07-05 00:26:53.751 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:26:53.751 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:26:53.751 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:26:54.317 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:26:54.318 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:26:54.319 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:26:54.319 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:26:54.372 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:26:54.372 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 617 ms
+2025-07-05 00:26:54.530 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2025-07-05 00:26:54.547 [restartedMain] DEBUG o.s.w.s.function.support.RouterFunctionMapping - 1 RouterFunction(s) in 'routerFunctionMapping'
+2025-07-05 00:26:54.549 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-07-05 00:26:54.555 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-07-05 00:26:54.605 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-07-05 00:26:54.607 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable tools capabilities, notification: true
+2025-07-05 00:26:54.608 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable resources capabilities, notification: true
+2025-07-05 00:26:54.608 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable prompts capabilities, notification: true
+2025-07-05 00:26:54.609 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable completions capabilities
+2025-07-05 00:26:54.670 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2025-07-05 00:26:54.673 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:testdb user=SA
+2025-07-05 00:26:54.673 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2025-07-05 00:26:54.673 [restartedMain] INFO  o.s.b.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-05 00:26:54.691 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-07-05 00:26:54.700 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:26:54.704 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-05 00:26:54.707 [restartedMain] INFO  com.example.agent.app.AgentApplication - Started AgentApplication in 1.009 seconds (process running for 1037.08)
+2025-07-05 00:26:54.720 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-07-05 00:27:51.807 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 8 class path changes (0 additions, 0 deletions, 8 modifications)
+2025-07-05 00:27:51.808 [Thread-24] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-05 00:27:51.809 [tomcat-shutdown] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:27:51.812 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-05 00:27:51.813 [Thread-24] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:27:51.815 [Thread-24] WARN  o.s.beans.factory.support.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-07-05 00:27:51.815 [Thread-24] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2025-07-05 00:27:51.816 [Thread-24] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2025-07-05 00:27:51.960 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:27:51.960 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:27:51.960 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:27:52.486 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:27:52.487 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:27:52.487 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:27:52.488 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:27:52.509 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:27:52.509 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 544 ms
+2025-07-05 00:27:52.601 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2025-07-05 00:27:52.608 [restartedMain] DEBUG o.s.w.s.function.support.RouterFunctionMapping - 1 RouterFunction(s) in 'routerFunctionMapping'
+2025-07-05 00:27:52.611 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-07-05 00:27:52.614 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-07-05 00:27:52.620 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-07-05 00:27:52.623 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable tools capabilities, notification: true
+2025-07-05 00:27:52.623 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable resources capabilities, notification: true
+2025-07-05 00:27:52.623 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable prompts capabilities, notification: true
+2025-07-05 00:27:52.624 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable completions capabilities
+2025-07-05 00:27:52.671 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2025-07-05 00:27:52.675 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Added connection conn30: url=jdbc:h2:mem:testdb user=SA
+2025-07-05 00:27:52.675 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2025-07-05 00:27:52.675 [restartedMain] INFO  o.s.b.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-05 00:27:52.688 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-07-05 00:27:52.691 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:27:52.697 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-05 00:27:52.702 [restartedMain] INFO  com.example.agent.app.AgentApplication - Started AgentApplication in 0.797 seconds (process running for 1095.074)
+2025-07-05 00:27:52.703 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-07-05 00:29:17.564 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 8 class path changes (0 additions, 0 deletions, 8 modifications)
+2025-07-05 00:29:17.566 [Thread-34] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-05 00:29:17.566 [tomcat-shutdown] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:29:17.569 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-05 00:29:17.570 [Thread-34] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:29:17.571 [Thread-34] WARN  o.s.beans.factory.support.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-07-05 00:29:17.571 [Thread-34] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
+2025-07-05 00:29:17.572 [Thread-34] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
+2025-07-05 00:29:17.664 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:29:17.664 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:29:17.664 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:29:17.890 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:29:17.891 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:29:17.891 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:29:17.891 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:29:17.901 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:29:17.901 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 235 ms
+2025-07-05 00:29:17.948 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2025-07-05 00:29:17.951 [restartedMain] DEBUG o.s.w.s.function.support.RouterFunctionMapping - 1 RouterFunction(s) in 'routerFunctionMapping'
+2025-07-05 00:29:17.952 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-07-05 00:29:17.954 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-07-05 00:29:17.956 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-07-05 00:29:17.956 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable tools capabilities, notification: true
+2025-07-05 00:29:17.957 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable resources capabilities, notification: true
+2025-07-05 00:29:17.957 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable prompts capabilities, notification: true
+2025-07-05 00:29:17.957 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable completions capabilities
+2025-07-05 00:29:17.974 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Starting...
+2025-07-05 00:29:17.976 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-5 - Added connection conn40: url=jdbc:h2:mem:testdb user=SA
+2025-07-05 00:29:17.976 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Start completed.
+2025-07-05 00:29:17.976 [restartedMain] INFO  o.s.b.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-05 00:29:17.981 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-07-05 00:29:17.983 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:29:17.984 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-05 00:29:17.987 [restartedMain] INFO  com.example.agent.app.AgentApplication - Started AgentApplication in 0.351 seconds (process running for 1180.359)
+2025-07-05 00:29:17.988 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-07-05 00:29:19.432 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 23 class path changes (23 additions, 0 deletions, 0 modifications)
+2025-07-05 00:29:19.433 [Thread-44] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-05 00:29:19.433 [tomcat-shutdown] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:29:19.437 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-05 00:29:19.437 [Thread-44] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:29:19.438 [Thread-44] WARN  o.s.beans.factory.support.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-07-05 00:29:19.438 [Thread-44] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown initiated...
+2025-07-05 00:29:19.439 [Thread-44] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown completed.
+2025-07-05 00:29:19.516 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:29:19.516 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:29:19.516 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:29:19.776 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:29:19.776 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:29:19.777 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:29:19.777 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:29:19.786 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:29:19.786 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 268 ms
+2025-07-05 00:29:19.856 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Starting...
+2025-07-05 00:29:19.866 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-6 - Added connection conn50: url=jdbc:h2:mem:agent_knowledge user=SA
+2025-07-05 00:29:19.866 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Start completed.
+2025-07-05 00:29:19.867 [restartedMain] ERROR com.zaxxer.hikari.HikariConfig - Failed to load driver class org.postgresql.Driver from HikariConfig class classloader jdk.internal.loader.ClassLoaders$AppClassLoader@36baf30c
+2025-07-05 00:29:19.868 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorDataSource' defined in class path resource [com/example/agent/knowledge/config/DataSourceConfig.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+2025-07-05 00:29:19.869 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Shutdown initiated...
+2025-07-05 00:29:19.869 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Shutdown completed.
+2025-07-05 00:29:19.869 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2025-07-05 00:29:19.873 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-05 00:29:19.888 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorDataSource' defined in class path resource [com/example/agent/knowledge/config/DataSourceConfig.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.example.agent.app.AgentApplication.main(AgentApplication.java:25)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:199)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 24 common frames omitted
+Caused by: java.lang.RuntimeException: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at com.zaxxer.hikari.HikariConfig.setDriverClassName(HikariConfig.java:514)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperty.set(DataSourceBuilder.java:478)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperties.set(DataSourceBuilder.java:370)
+	at org.springframework.boot.jdbc.DataSourceBuilder.build(DataSourceBuilder.java:185)
+	at com.example.agent.knowledge.config.DataSourceConfig.vectorDataSource(DataSourceConfig.java:74)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$0.CGLIB$vectorDataSource$4(<generated>)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:400)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$0.vectorDataSource(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	... 27 common frames omitted
+2025-07-05 00:31:02.299 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:31:02.299 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:31:02.299 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:31:02.503 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:31:02.503 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:31:02.503 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:31:02.503 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:31:02.514 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:31:02.514 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 213 ms
+2025-07-05 00:31:02.561 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Starting...
+2025-07-05 00:31:02.562 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-7 - Added connection conn51: url=jdbc:h2:mem:agent_knowledge user=SA
+2025-07-05 00:31:02.563 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Start completed.
+2025-07-05 00:31:02.564 [restartedMain] ERROR com.zaxxer.hikari.HikariConfig - Failed to load driver class org.postgresql.Driver from HikariConfig class classloader jdk.internal.loader.ClassLoaders$AppClassLoader@36baf30c
+2025-07-05 00:31:02.564 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorDataSource' defined in class path resource [com/example/agent/knowledge/config/DataSourceConfig.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+2025-07-05 00:31:02.564 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Shutdown initiated...
+2025-07-05 00:31:02.564 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Shutdown completed.
+2025-07-05 00:31:02.564 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2025-07-05 00:31:02.567 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-05 00:31:02.569 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorDataSource' defined in class path resource [com/example/agent/knowledge/config/DataSourceConfig.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.example.agent.app.AgentApplication.main(AgentApplication.java:25)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:199)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 24 common frames omitted
+Caused by: java.lang.RuntimeException: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at com.zaxxer.hikari.HikariConfig.setDriverClassName(HikariConfig.java:514)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperty.set(DataSourceBuilder.java:478)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperties.set(DataSourceBuilder.java:370)
+	at org.springframework.boot.jdbc.DataSourceBuilder.build(DataSourceBuilder.java:185)
+	at com.example.agent.knowledge.config.DataSourceConfig.vectorDataSource(DataSourceConfig.java:74)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$0.CGLIB$vectorDataSource$4(<generated>)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:400)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$0.vectorDataSource(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	... 27 common frames omitted
+2025-07-05 00:32:21.039 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:32:21.039 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:32:21.039 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:32:21.235 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:32:21.235 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:32:21.235 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:32:21.237 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:32:21.246 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:32:21.247 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 206 ms
+2025-07-05 00:32:21.288 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Starting...
+2025-07-05 00:32:21.288 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-8 - Added connection conn52: url=jdbc:h2:mem:agent_knowledge user=SA
+2025-07-05 00:32:21.289 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Start completed.
+2025-07-05 00:32:21.289 [restartedMain] ERROR com.zaxxer.hikari.HikariConfig - Failed to load driver class org.postgresql.Driver from HikariConfig class classloader jdk.internal.loader.ClassLoaders$AppClassLoader@36baf30c
+2025-07-05 00:32:21.290 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorDataSource' defined in class path resource [com/example/agent/knowledge/config/DataSourceConfig.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+2025-07-05 00:32:21.290 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Shutdown initiated...
+2025-07-05 00:32:21.290 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Shutdown completed.
+2025-07-05 00:32:21.291 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2025-07-05 00:32:21.293 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-05 00:32:21.295 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorDataSource' defined in class path resource [com/example/agent/knowledge/config/DataSourceConfig.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.example.agent.app.AgentApplication.main(AgentApplication.java:25)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:199)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 24 common frames omitted
+Caused by: java.lang.RuntimeException: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at com.zaxxer.hikari.HikariConfig.setDriverClassName(HikariConfig.java:514)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperty.set(DataSourceBuilder.java:478)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperties.set(DataSourceBuilder.java:370)
+	at org.springframework.boot.jdbc.DataSourceBuilder.build(DataSourceBuilder.java:185)
+	at com.example.agent.knowledge.config.DataSourceConfig.vectorDataSource(DataSourceConfig.java:74)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$0.CGLIB$vectorDataSource$4(<generated>)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:400)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$0.vectorDataSource(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	... 27 common frames omitted
+2025-07-05 00:33:15.401 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:33:15.401 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:33:15.401 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:33:15.560 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:33:15.560 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:33:15.560 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:33:15.561 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:33:15.568 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:33:15.568 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 166 ms
+2025-07-05 00:33:15.607 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2025-07-05 00:33:15.610 [restartedMain] DEBUG o.s.w.s.function.support.RouterFunctionMapping - 1 RouterFunction(s) in 'routerFunctionMapping'
+2025-07-05 00:33:15.611 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-07-05 00:33:15.612 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-07-05 00:33:15.614 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-07-05 00:33:15.615 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable tools capabilities, notification: true
+2025-07-05 00:33:15.615 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable resources capabilities, notification: true
+2025-07-05 00:33:15.615 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable prompts capabilities, notification: true
+2025-07-05 00:33:15.615 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable completions capabilities
+2025-07-05 00:33:15.629 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-9 - Starting...
+2025-07-05 00:33:15.631 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-9 - Added connection conn53: url=jdbc:h2:mem:testdb user=SA
+2025-07-05 00:33:15.631 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-9 - Start completed.
+2025-07-05 00:33:15.631 [restartedMain] INFO  o.s.b.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-05 00:33:15.636 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-07-05 00:33:15.638 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:33:15.640 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-05 00:33:15.641 [restartedMain] INFO  com.example.agent.app.AgentApplication - Started AgentApplication in 0.259 seconds (process running for 1418.013)
+2025-07-05 00:33:15.642 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-07-05 00:33:25.238 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-07-05 00:33:25.239 [Thread-54] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-05 00:33:25.239 [tomcat-shutdown] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:33:25.241 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-05 00:33:25.241 [Thread-54] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:33:25.242 [Thread-54] WARN  o.s.beans.factory.support.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-07-05 00:33:25.242 [Thread-54] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-9 - Shutdown initiated...
+2025-07-05 00:33:25.243 [Thread-54] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-9 - Shutdown completed.
+2025-07-05 00:33:25.323 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:33:25.323 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:33:25.323 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:33:25.487 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:33:25.488 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:33:25.488 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:33:25.488 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:33:25.497 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:33:25.497 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 172 ms
+2025-07-05 00:33:25.533 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2025-07-05 00:33:25.536 [restartedMain] DEBUG o.s.w.s.function.support.RouterFunctionMapping - 1 RouterFunction(s) in 'routerFunctionMapping'
+2025-07-05 00:33:25.538 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-07-05 00:33:25.539 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-07-05 00:33:25.541 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-07-05 00:33:25.542 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable tools capabilities, notification: true
+2025-07-05 00:33:25.542 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable resources capabilities, notification: true
+2025-07-05 00:33:25.542 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable prompts capabilities, notification: true
+2025-07-05 00:33:25.542 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable completions capabilities
+2025-07-05 00:33:25.558 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-10 - Starting...
+2025-07-05 00:33:25.560 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-10 - Added connection conn63: url=jdbc:h2:mem:testdb user=SA
+2025-07-05 00:33:25.560 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-10 - Start completed.
+2025-07-05 00:33:25.560 [restartedMain] INFO  o.s.b.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-05 00:33:25.565 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-07-05 00:33:25.568 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:33:25.569 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-05 00:33:25.571 [restartedMain] INFO  com.example.agent.app.AgentApplication - Started AgentApplication in 0.266 seconds (process running for 1427.943)
+2025-07-05 00:33:25.571 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-07-05 00:33:26.983 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2025-07-05 00:33:26.984 [Thread-91] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-05 00:33:26.984 [tomcat-shutdown] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:33:26.986 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-05 00:33:26.986 [Thread-91] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:33:26.987 [Thread-91] WARN  o.s.beans.factory.support.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-07-05 00:33:26.987 [Thread-91] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-10 - Shutdown initiated...
+2025-07-05 00:33:26.988 [Thread-91] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-10 - Shutdown completed.
+2025-07-05 00:33:27.067 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:33:27.067 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:33:27.067 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:33:27.221 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:33:27.221 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:33:27.221 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:33:27.221 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:33:27.229 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:33:27.229 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 160 ms
+2025-07-05 00:33:27.262 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2025-07-05 00:33:27.265 [restartedMain] DEBUG o.s.w.s.function.support.RouterFunctionMapping - 1 RouterFunction(s) in 'routerFunctionMapping'
+2025-07-05 00:33:27.265 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-07-05 00:33:27.267 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-07-05 00:33:27.268 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-07-05 00:33:27.269 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable tools capabilities, notification: true
+2025-07-05 00:33:27.269 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable resources capabilities, notification: true
+2025-07-05 00:33:27.269 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable prompts capabilities, notification: true
+2025-07-05 00:33:27.269 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable completions capabilities
+2025-07-05 00:33:27.284 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-11 - Starting...
+2025-07-05 00:33:27.285 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-11 - Added connection conn73: url=jdbc:h2:mem:testdb user=SA
+2025-07-05 00:33:27.285 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-11 - Start completed.
+2025-07-05 00:33:27.285 [restartedMain] INFO  o.s.b.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-05 00:33:27.290 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-07-05 00:33:27.292 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:33:27.294 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-05 00:33:27.295 [restartedMain] INFO  com.example.agent.app.AgentApplication - Started AgentApplication in 0.247 seconds (process running for 1429.667)
+2025-07-05 00:33:27.295 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-07-05 00:33:52.903 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 31 class path changes (22 additions, 0 deletions, 9 modifications)
+2025-07-05 00:33:52.904 [Thread-101] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-05 00:33:52.904 [tomcat-shutdown] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:33:52.906 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-05 00:33:52.907 [Thread-101] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:33:52.908 [Thread-101] WARN  o.s.beans.factory.support.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-07-05 00:33:52.908 [Thread-101] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-11 - Shutdown initiated...
+2025-07-05 00:33:52.908 [Thread-101] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-11 - Shutdown completed.
+2025-07-05 00:33:52.987 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:33:52.987 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:33:52.987 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:33:53.157 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:33:53.158 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:33:53.158 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:33:53.158 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:33:53.165 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:33:53.165 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 177 ms
+2025-07-05 00:33:53.200 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-12 - Starting...
+2025-07-05 00:33:53.201 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-12 - Added connection conn83: url=jdbc:h2:mem:agent_knowledge user=SA
+2025-07-05 00:33:53.201 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-12 - Start completed.
+2025-07-05 00:33:53.202 [restartedMain] ERROR com.zaxxer.hikari.HikariConfig - Failed to load driver class org.postgresql.Driver from HikariConfig class classloader jdk.internal.loader.ClassLoaders$AppClassLoader@36baf30c
+2025-07-05 00:33:53.202 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorDataSource' defined in class path resource [com/example/agent/knowledge/config/DataSourceConfig.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+2025-07-05 00:33:53.202 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-12 - Shutdown initiated...
+2025-07-05 00:33:53.202 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-12 - Shutdown completed.
+2025-07-05 00:33:53.203 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2025-07-05 00:33:53.205 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-05 00:33:53.207 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorDataSource' defined in class path resource [com/example/agent/knowledge/config/DataSourceConfig.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.example.agent.app.AgentApplication.main(AgentApplication.java:25)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:199)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 24 common frames omitted
+Caused by: java.lang.RuntimeException: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at com.zaxxer.hikari.HikariConfig.setDriverClassName(HikariConfig.java:514)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperty.set(DataSourceBuilder.java:478)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperties.set(DataSourceBuilder.java:370)
+	at org.springframework.boot.jdbc.DataSourceBuilder.build(DataSourceBuilder.java:185)
+	at com.example.agent.knowledge.config.DataSourceConfig.vectorDataSource(DataSourceConfig.java:74)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$0.CGLIB$vectorDataSource$4(<generated>)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:400)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$0.vectorDataSource(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	... 27 common frames omitted
+2025-07-05 00:35:49.744 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:35:49.744 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:35:49.744 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:35:49.912 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:35:49.913 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:35:49.913 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:35:49.913 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:35:49.924 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat-4].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:35:49.924 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 179 ms
+2025-07-05 00:35:49.944 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-13 - Starting...
+2025-07-05 00:35:49.945 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-13 - Added connection conn84: url=jdbc:h2:mem:agent_knowledge user=SA
+2025-07-05 00:35:49.945 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-13 - Start completed.
+2025-07-05 00:35:49.975 [restartedMain] ERROR com.zaxxer.hikari.HikariConfig - Failed to load driver class org.postgresql.Driver from HikariConfig class classloader jdk.internal.loader.ClassLoaders$AppClassLoader@36baf30c
+2025-07-05 00:35:49.976 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorDataSource' defined in class path resource [com/example/agent/knowledge/config/DataSourceConfig.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+2025-07-05 00:35:49.976 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-13 - Shutdown initiated...
+2025-07-05 00:35:49.976 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-13 - Shutdown completed.
+2025-07-05 00:35:49.976 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2025-07-05 00:35:49.978 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-05 00:35:49.980 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorDataSource' defined in class path resource [com/example/agent/knowledge/config/DataSourceConfig.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.example.agent.app.AgentApplication.main(AgentApplication.java:25)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:199)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 24 common frames omitted
+Caused by: java.lang.RuntimeException: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at com.zaxxer.hikari.HikariConfig.setDriverClassName(HikariConfig.java:514)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperty.set(DataSourceBuilder.java:478)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperties.set(DataSourceBuilder.java:370)
+	at org.springframework.boot.jdbc.DataSourceBuilder.build(DataSourceBuilder.java:185)
+	at com.example.agent.knowledge.config.DataSourceConfig.vectorDataSource(DataSourceConfig.java:74)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$0.CGLIB$vectorDataSource$4(<generated>)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:400)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$0.vectorDataSource(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	... 27 common frames omitted
+2025-07-05 00:45:15.609 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:45:15.610 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:45:15.610 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:45:16.081 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: java.lang.IllegalStateException: Cannot load configuration class: com.example.agent.knowledge.config.DataSourceConfig
+2025-07-05 00:45:16.082 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-05 00:45:16.085 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: Cannot load configuration class: com.example.agent.knowledge.config.DataSourceConfig
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:503)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:311)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:363)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:153)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.example.agent.app.AgentApplication.main(AgentApplication.java:25)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.ClassNotFoundException: com.example.agent.knowledge.config.DataSourceConfig
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanDefinition.resolveBeanClass(AbstractBeanDefinition.java:503)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:499)
+	... 15 common frames omitted
+2025-07-05 00:45:18.798 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:45:18.799 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:45:18.799 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:45:19.001 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:45:19.001 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:45:19.002 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:45:19.002 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:45:19.011 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat-5].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:45:19.011 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 211 ms
+2025-07-05 00:45:19.029 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-14 - Starting...
+2025-07-05 00:45:19.030 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-14 - Added connection conn85: url=jdbc:h2:mem:agent_knowledge user=SA
+2025-07-05 00:45:19.031 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-14 - Start completed.
+2025-07-05 00:45:19.066 [restartedMain] ERROR com.zaxxer.hikari.HikariConfig - Failed to load driver class org.postgresql.Driver from HikariConfig class classloader jdk.internal.loader.ClassLoaders$AppClassLoader@36baf30c
+2025-07-05 00:45:19.066 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorDataSource' defined in class path resource [com/example/agent/knowledge/config/DataSourceConfig.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+2025-07-05 00:45:19.066 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-14 - Shutdown initiated...
+2025-07-05 00:45:19.066 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-14 - Shutdown completed.
+2025-07-05 00:45:19.067 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2025-07-05 00:45:19.069 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-05 00:45:19.072 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorDataSource' defined in class path resource [com/example/agent/knowledge/config/DataSourceConfig.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.example.agent.app.AgentApplication.main(AgentApplication.java:25)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:199)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 24 common frames omitted
+Caused by: java.lang.RuntimeException: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at com.zaxxer.hikari.HikariConfig.setDriverClassName(HikariConfig.java:514)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperty.set(DataSourceBuilder.java:478)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperties.set(DataSourceBuilder.java:370)
+	at org.springframework.boot.jdbc.DataSourceBuilder.build(DataSourceBuilder.java:185)
+	at com.example.agent.knowledge.config.DataSourceConfig.vectorDataSource(DataSourceConfig.java:74)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$0.CGLIB$vectorDataSource$4(<generated>)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:400)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$0.vectorDataSource(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	... 27 common frames omitted
+2025-07-05 00:46:34.657 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-07-05 00:46:34.693 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 12940 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:46:34.695 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:46:34.695 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:46:34.741 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-05 00:46:34.741 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-05 00:46:35.933 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:46:35.954 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:46:35.957 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:46:35.957 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:46:35.994 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:46:35.995 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1253 ms
+2025-07-05 00:46:36.120 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-05 00:46:36.259 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:agent_knowledge user=SA
+2025-07-05 00:46:36.260 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-05 00:46:36.842 [restartedMain] ERROR com.zaxxer.hikari.HikariConfig - Failed to load driver class org.postgresql.Driver from HikariConfig class classloader jdk.internal.loader.ClassLoaders$AppClassLoader@36baf30c
+2025-07-05 00:46:36.843 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorDataSource' defined in class path resource [com/example/agent/knowledge/config/DataSourceConfig.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+2025-07-05 00:46:36.843 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-07-05 00:46:36.845 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-07-05 00:46:36.848 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2025-07-05 00:46:36.858 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-05 00:46:36.878 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vectorDataSource' defined in class path resource [com/example/agent/knowledge/config/DataSourceConfig.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.example.agent.app.AgentApplication.main(AgentApplication.java:25)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'vectorDataSource' threw exception with message: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:199)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 24 common frames omitted
+Caused by: java.lang.RuntimeException: Failed to load driver class org.postgresql.Driver in either of HikariConfig class loader or Thread context classloader
+	at com.zaxxer.hikari.HikariConfig.setDriverClassName(HikariConfig.java:514)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperty.set(DataSourceBuilder.java:478)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperties.set(DataSourceBuilder.java:370)
+	at org.springframework.boot.jdbc.DataSourceBuilder.build(DataSourceBuilder.java:185)
+	at com.example.agent.knowledge.config.DataSourceConfig.vectorDataSource(DataSourceConfig.java:74)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$0.CGLIB$vectorDataSource$6(<generated>)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:400)
+	at com.example.agent.knowledge.config.DataSourceConfig$$SpringCGLIB$$0.vectorDataSource(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	... 27 common frames omitted
+2025-07-05 00:52:43.938 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-07-05 00:52:43.979 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 31936 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:52:43.979 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:52:43.980 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:52:44.019 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-05 00:52:44.019 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-05 00:52:45.268 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:52:45.290 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:52:45.292 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:52:45.292 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:52:45.329 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:52:45.330 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1309 ms
+2025-07-05 00:52:45.459 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-05 00:52:45.597 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:agent_knowledge user=SA
+2025-07-05 00:52:45.598 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-05 00:52:46.396 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2025-07-05 00:52:46.439 [restartedMain] DEBUG o.s.w.s.function.support.RouterFunctionMapping - 1 RouterFunction(s) in 'routerFunctionMapping'
+2025-07-05 00:52:46.474 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-07-05 00:52:46.505 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-07-05 00:52:46.553 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-07-05 00:52:46.565 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable tools capabilities, notification: true
+2025-07-05 00:52:46.566 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable resources capabilities, notification: true
+2025-07-05 00:52:46.566 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable prompts capabilities, notification: true
+2025-07-05 00:52:46.567 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable completions capabilities
+2025-07-05 00:52:46.666 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2025-07-05 00:52:46.669 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn5: url=jdbc:h2:mem:vector_db user=SA
+2025-07-05 00:52:46.670 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2025-07-05 00:52:46.670 [restartedMain] INFO  o.s.b.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Databases available at 'jdbc:h2:mem:agent_knowledge', 'jdbc:h2:mem:vector_db'
+2025-07-05 00:52:46.717 [restartedMain] WARN  o.s.b.d.autoconfigure.OptionalLiveReloadServer - Unable to start LiveReload server
+2025-07-05 00:52:46.726 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:52:46.728 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-07-05 00:52:46.736 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2025-07-05 00:52:46.737 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2025-07-05 00:52:46.738 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-07-05 00:52:46.738 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-07-05 00:52:46.751 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-05 00:52:46.767 [restartedMain] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2025-07-05 00:53:33.035 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-07-05 00:53:33.070 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 22020 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:53:33.070 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:53:33.070 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:53:33.109 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-05 00:53:33.109 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-05 00:53:34.377 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:53:34.398 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:53:34.402 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:53:34.402 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:53:34.443 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:53:34.443 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1333 ms
+2025-07-05 00:53:34.574 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-05 00:53:34.701 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:agent_knowledge user=SA
+2025-07-05 00:53:34.702 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-05 00:53:35.434 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2025-07-05 00:53:35.474 [restartedMain] DEBUG o.s.w.s.function.support.RouterFunctionMapping - 1 RouterFunction(s) in 'routerFunctionMapping'
+2025-07-05 00:53:35.502 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-07-05 00:53:35.520 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-07-05 00:53:35.562 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-07-05 00:53:35.574 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable tools capabilities, notification: true
+2025-07-05 00:53:35.575 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable resources capabilities, notification: true
+2025-07-05 00:53:35.576 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable prompts capabilities, notification: true
+2025-07-05 00:53:35.576 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable completions capabilities
+2025-07-05 00:53:35.679 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2025-07-05 00:53:35.681 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn5: url=jdbc:h2:mem:vector_db user=SA
+2025-07-05 00:53:35.681 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2025-07-05 00:53:35.682 [restartedMain] INFO  o.s.b.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Databases available at 'jdbc:h2:mem:agent_knowledge', 'jdbc:h2:mem:vector_db'
+2025-07-05 00:53:35.742 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-07-05 00:53:35.751 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:53:35.761 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-05 00:53:35.769 [restartedMain] INFO  com.example.agent.app.AgentApplication - Started AgentApplication in 3.196 seconds (process running for 3.531)
+2025-07-05 00:53:42.485 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-05 00:53:42.485 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-07-05 00:53:42.485 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2025-07-05 00:53:42.485 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2025-07-05 00:53:42.485 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2025-07-05 00:53:42.486 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@15faf3ca
+2025-07-05 00:53:42.486 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@25828370
+2025-07-05 00:53:42.486 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-07-05 00:53:42.486 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-07-05 00:53:42.493 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/ai/chat?message=%E4%BD%A0%E5%A5%BD", parameters={masked}
+2025-07-05 00:53:42.502 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.example.agent.pipeline.controller.ChatController#chat(String)
+2025-07-05 00:53:42.652 [http-nio-8080-exec-1] DEBUG org.springframework.web.client.DefaultRestClient - Writing [ChatCompletionRequest[messages=[ChatCompletionMessage[rawContent=你好, role=USER, name=null, toolCallId=null, toolCalls=null, refusal=null, audioOutput=null, annotations=null]], model=deepseek-reasoner, store=null, metadata=null, frequencyPenalty=null, logitBias=null, logprobs=null, topLogprobs=null, maxTokens=2048, maxCompletionTokens=null, n=null, outputModalities=null, audioParameters=null, presencePenalty=null, responseFormat=null, seed=null, serviceTier=null, stop=null, stream=false, streamOptions=null, temperature=0.7, topP=null, tools=null, toolChoice=null, parallelToolCalls=null, user=null, reasoningEffort=null, webSearchOptions=null]] as "application/json" with org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
+2025-07-05 00:53:58.223 [http-nio-8080-exec-1] DEBUG org.springframework.web.client.DefaultRestClient - Reading to [org.springframework.ai.openai.api.OpenAiApi$ChatCompletion]
+2025-07-05 00:53:58.254 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'text/plain', given [*/*] and supported [text/plain, */*, application/json, application/*+json]
+2025-07-05 00:53:58.256 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing ["你好呀！😊很高兴见到你～我是DeepSeek助手，随时准备为你解答问题、陪你聊天，或者帮你处理各种任务。无论你是想了解知识、需要工作学习上的帮助，还是单纯想聊聊天，我都在这里！<EOL><EOL>你想聊聊什么？或者 (truncated)..."]
+2025-07-05 00:53:58.261 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK

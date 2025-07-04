@@ -5,9 +5,9 @@
 
 ## 🎯 任务进度统计
 - 总任务数：31
-- 已完成：7/31 (22.6%)
+- 已完成：9/31 (29.0%)
 - 进行中：0/31 (0%)
-- 待开始：24/31 (77.4%)
+- 待开始：22/31 (71.0%)
 
 ---
 
@@ -100,25 +100,29 @@
 
 ### 阶段2：核心功能模块 (8-16)
 
-#### ⏳ 8. knowledge-repository
-- **状态**: 待开始
+#### ✅ 8. knowledge-repository
+- **状态**: 已完成
 - **描述**: 实现知识检索仓库层
-- **任务内容**:
-  - 实现向量数据库访问
-  - 实现SQL数据库查询
-  - 实现外部API调用
-  - 配置连接池和事务
+- **完成内容**:
+  - ✅ 完善KnowledgeChunk DTO，添加所有必要属性
+  - ✅ 实现VectorStoreRepository接口和实现类，支持向量相似度搜索
+  - ✅ 实现SqlDatabaseRepository接口和实现类，支持SQL查询操作
+  - ✅ 实现ApiSourceRepository接口和实现类，支持外部API调用
+  - ✅ 配置DataSourceConfig，包含连接池、事务管理和多数据源
+  - ✅ 创建所有仓库的实现类：VectorStoreRepositoryImpl、SqlDatabaseRepositoryImpl、ApiSourceRepositoryImpl
 - **预计工期**: 3天
 - **依赖**: agent-knowledge-structure
 
-#### ⏳ 9. knowledge-strategy-impl
-- **状态**: 待开始
+#### ✅ 9. knowledge-strategy-impl
+- **状态**: 已完成
 - **描述**: 实现具体的知识检索策略
-- **任务内容**:
-  - VectorStoreStrategy实现
-  - SqlDatabaseStrategy实现  
-  - ApiSourceStrategy实现
-  - 策略工厂完善
+- **完成内容**:
+  - ✅ VectorStoreStrategyImpl：基于向量相似度的知识检索，支持语义搜索和相似度匹配
+  - ✅ SqlDatabaseStrategyImpl：基于SQL查询的知识检索，支持关键词搜索和条件查询
+  - ✅ ApiSourceStrategyImpl：基于外部API的知识检索，支持异步调用和多源聚合
+  - ✅ KnowledgeSourceFactory：智能策略选择工厂，支持上下文感知的策略选择
+  - ✅ KnowledgeSourceStrategy接口：统一的策略接口定义
+  - ✅ AgentContext DTO：完善的上下文信息管理
 - **预计工期**: 3天
 - **依赖**: knowledge-repository
 
