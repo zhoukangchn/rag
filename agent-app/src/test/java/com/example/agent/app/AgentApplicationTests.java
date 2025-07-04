@@ -1,10 +1,10 @@
-package com.example.rag;
+package com.example.agent.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RagApplicationTests {
+class AgentApplicationTests {
 
 	@Test
 	void contextLoads() {

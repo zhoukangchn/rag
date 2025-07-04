@@ -1,5 +1,4 @@
-
-package com.example.rag;
+package com.example.agent.pipeline.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.openai.OpenAiChatOptions;
