@@ -28,6 +28,23 @@ public interface KnowledgeSourceStrategy {
     boolean isAvailable();
     
     /**
+     * 简化的知识检索方法
+     * 
+     * @param context Agent上下文信息
+     * @return 检索到的知识块列表
+     */
+    default List<KnowledgeChunk> retrieve(AgentContext context) {
+        if (context == null || context.getCurrentQuery() == null) {
+            return java.util.Collections.emptyList();
+        }
+        String query = context.getCurrentQuery();
+        Object maxResultsObj = context.getRetrievalParams() != null ? 
+            context.getRetrievalParams().get("maxResults") : null;
+        int limit = maxResultsObj instanceof Integer ? (Integer) maxResultsObj : 10;
+        return retrieveKnowledge(query, context, limit);
+    }
+    
+    /**
      * 根据查询文本进行知识检索
      * 
      * @param query 查询文本

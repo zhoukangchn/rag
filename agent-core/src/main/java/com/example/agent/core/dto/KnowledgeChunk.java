@@ -1,6 +1,7 @@
 package com.example.agent.core.dto;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -65,6 +66,16 @@ public class KnowledgeChunk {
      * 更新时间
      */
     private LocalDateTime updatedAt;
+    
+    /**
+     * 检索时间
+     */
+    private Date retrievalTime;
+    
+    /**
+     * 质量评分（0-1之间）
+     */
+    private Double score;
     
     // 默认构造函数
     public KnowledgeChunk() {}
@@ -168,6 +179,22 @@ public class KnowledgeChunk {
         this.updatedAt = updatedAt;
     }
     
+    public Date getRetrievalTime() {
+        return retrievalTime;
+    }
+    
+    public void setRetrievalTime(Date retrievalTime) {
+        this.retrievalTime = retrievalTime;
+    }
+    
+    public Double getScore() {
+        return score != null ? score : (similarity != null ? similarity : 0.0);
+    }
+    
+    public void setScore(Double score) {
+        this.score = score;
+    }
+    
     @Override
     public String toString() {
         return "KnowledgeChunk{" +
@@ -177,6 +204,7 @@ public class KnowledgeChunk {
                 ", source='" + source + '\'' +
                 ", sourceType='" + sourceType + '\'' +
                 ", similarity=" + similarity +
+                ", score=" + score +
                 ", createdAt=" + createdAt +
                 '}';
     }

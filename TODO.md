@@ -5,9 +5,9 @@
 
 ## 🎯 任务进度统计
 - 总任务数：31
-- 已完成：9/31 (29.0%)
-- 进行中：0/31 (0%)
-- 待开始：22/31 (71.0%)
+- 已完成：11/31 (35.5%)
+- 进行中：1/31 (3.2%)
+- 待开始：19/31 (61.3%)
 
 ---
 
@@ -126,30 +126,39 @@
 - **预计工期**: 3天
 - **依赖**: knowledge-repository
 
-#### ⏳ 10. pipeline-steps-impl
-- **状态**: 待开始
+#### ✅ 10. pipeline-steps-impl
+- **状态**: 已完成
 - **描述**: 实现责任链处理步骤
-- **任务内容**:
-  - PlanningStep：查询规划
-  - KnowledgeRecallStep：知识召回
-  - PromptConstructionStep：prompt构建
-  - ModelInvocationStep：模型调用
+- **完成内容**:
+  - ✅ 完善PipelineStep接口，定义处理方法和支持责任链模式
+  - ✅ 实现AbstractPipelineStep抽象类，包含责任链模式的基本功能和模板方法
+  - ✅ 完善PlanDetail DTO，添加计划详情属性
+  - ✅ 实现PlanningStep：查询规划，包含查询分析、意图识别、策略选择等
+  - ✅ 实现KnowledgeRecallStep：知识召回，支持多策略并行检索和后处理
+  - ✅ 实现PromptConstructionStep：prompt构建，将知识块组装成LLM提示
+  - ✅ 实现ModelInvocationStep：模型调用，调用LLM生成最终响应
+  - ✅ 完善KnowledgeChunk DTO，添加retrievalTime和score属性
+  - ✅ 完善KnowledgeSourceStrategy接口，添加简化的retrieve方法
 - **预计工期**: 4天
 - **依赖**: agent-pipeline-structure, knowledge-strategy-impl
 
-#### ⏳ 11. pipeline-service
-- **状态**: 待开始
+#### ✅ 11. pipeline-service
+- **状态**: 已完成
 - **描述**: 实现管道编排服务
-- **任务内容**:
-  - AgentPipelineService实现
-  - 责任链动态组装
-  - 错误处理和重试
-  - 性能监控集成
+- **完成内容**:
+  - ✅ 实现ChainContext责任链执行上下文，包含执行状态管理和统计信息
+  - ✅ 实现PipelineChain责任链处理框架，支持动态组装、执行和重试逻辑
+  - ✅ 实现AgentPipelineService管道编排外观服务，提供统一的处理入口
+  - ✅ 实现AgentProcessingResult结果封装类，包含完整的处理信息
+  - ✅ 支持多种预定义处理链：标准链、快速链、知识增强链
+  - ✅ 支持动态处理链创建和上下文感知的步骤选择
+  - ✅ 集成错误处理、重试机制和性能监控
+  - ✅ 支持异步处理和执行统计信息收集
 - **预计工期**: 2天
 - **依赖**: pipeline-steps-impl
 
-#### ⏳ 12. streaming-support
-- **状态**: 待开始
+#### 🔄 12. streaming-support
+- **状态**: 进行中
 - **描述**: 实现双向流式处理支持
 - **任务内容**:
   - SseEmitter进度推送
@@ -424,7 +433,16 @@
 - 完成Maven父级pom配置和依赖管理
 - 修复依赖问题，成功安装所有模块
 - 创建详细的TODO任务清单文档
+- 完成任务10：pipeline-steps-impl（实现责任链处理步骤）
+  - 完善PipelineStep接口和AbstractPipelineStep抽象类
+  - 实现四个核心步骤：PlanningStep、KnowledgeRecallStep、PromptConstructionStep、ModelInvocationStep
+  - 完善相关DTO和接口
+- 完成任务11：pipeline-service（实现管道编排服务）
+  - 实现ChainContext、PipelineChain、AgentPipelineService核心类
+  - 支持责任链动态组装、错误处理和重试机制
+  - 集成性能监控和执行统计功能
+  - 提供多种预定义处理链和异步处理能力
 
 ---
 
-*最后更新: 2025-07-04 23:44* 
+*最后更新: 2025-07-05 00:12* 
