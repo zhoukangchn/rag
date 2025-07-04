@@ -1,0 +1,93 @@
+spring:
+  application:
+    name: spring-boot-knowledge-agent
+  
+  # AI配置
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:your-api-key}
+      base-url: https://api.deepseek.com
+      chat:
+        options:
+          model: deepseek-reasoner
+          temperature: 0.7
+          max-tokens: 2048
+  
+  # 数据源配置
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      maximum-pool-size: 10
+  
+  # H2控制台
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  # JPA配置
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+
+# 服务器配置
+server:
+  port: 8080
+
+# 管理端点配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    org.springframework.ai: DEBUG
+    com.example.agent: DEBUG
+    org.springframework.web: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/agent.log
+
+# Agent自定义配置
+agent:
+  knowledge:
+    vector-store:
+      enabled: true
+      dimension: 1536
+    sql-database:
+      enabled: true
+    api-source:
+      enabled: true
+      timeout: 30s
+  pipeline:
+    async: true
+    timeout: 60s
+  mcp:
+    enabled: true
+    websocket:
+      port: 8081
+      path: /mcp 

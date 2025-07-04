@@ -1,0 +1,44 @@
+# 生产环境配置
+spring:
+  profiles:
+    active: prod
+  
+  # 生产环境数据源（示例）
+  datasource:
+    url: jdbc:postgresql://localhost:5432/agent_prod
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USERNAME:agent}
+    password: ${DB_PASSWORD:password}
+    hikari:
+      maximum-pool-size: 20
+      connection-timeout: 20000
+  
+  # JPA配置
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+# 服务器配置
+server:
+  port: 8080
+
+# 日志配置
+logging:
+  level:
+    root: WARN
+    com.example.agent: INFO
+
+# Agent配置
+agent:
+  knowledge:
+    vector-store:
+      enabled: true
+    sql-database:
+      enabled: true
+    api-source:
+      enabled: true
+  pipeline:
+    async: true
+  mcp:
+    enabled: true 

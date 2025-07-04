@@ -1,0 +1,79 @@
+2025-07-05 00:07:33.452 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-07-05 00:07:33.489 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 28632 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:07:33.490 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:07:33.490 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:07:33.528 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-05 00:07:33.528 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-05 00:07:34.750 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:07:34.767 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:07:34.769 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:07:34.769 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:07:34.821 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:07:34.822 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1294 ms
+2025-07-05 00:07:35.348 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2025-07-05 00:07:35.387 [restartedMain] DEBUG o.s.w.s.function.support.RouterFunctionMapping - 1 RouterFunction(s) in 'routerFunctionMapping'
+2025-07-05 00:07:35.405 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-07-05 00:07:35.425 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-07-05 00:07:35.475 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-07-05 00:07:35.491 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable tools capabilities, notification: true
+2025-07-05 00:07:35.492 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable resources capabilities, notification: true
+2025-07-05 00:07:35.492 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable prompts capabilities, notification: true
+2025-07-05 00:07:35.494 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable completions capabilities
+2025-07-05 00:07:35.657 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-05 00:07:35.801 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-07-05 00:07:35.803 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-05 00:07:35.810 [restartedMain] INFO  o.s.b.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-05 00:07:35.911 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-07-05 00:07:35.928 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:07:35.950 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/api'
+2025-07-05 00:07:35.960 [restartedMain] INFO  com.example.agent.app.AgentApplication - Started AgentApplication in 2.99 seconds (process running for 3.339)
+2025-07-05 00:09:36.419 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-05 00:09:36.425 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-05 00:09:36.433 [SpringApplicationShutdownHook] WARN  o.s.beans.factory.support.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-07-05 00:09:36.434 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-07-05 00:09:36.435 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-07-05 00:09:38.478 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-07-05 00:09:38.515 [restartedMain] INFO  com.example.agent.app.AgentApplication - Starting AgentApplication using Java 21.0.7 with PID 16036 (C:\my\work\rag\agent-app\target\classes started by zhoukang in C:\my\work\rag)
+2025-07-05 00:09:38.516 [restartedMain] DEBUG com.example.agent.app.AgentApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-07-05 00:09:38.516 [restartedMain] INFO  com.example.agent.app.AgentApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-05 00:09:38.559 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-05 00:09:38.559 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-05 00:09:39.851 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-05 00:09:39.866 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:09:39.868 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-05 00:09:39.868 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-05 00:09:39.911 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-05 00:09:39.913 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1352 ms
+2025-07-05 00:09:40.432 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2025-07-05 00:09:40.469 [restartedMain] DEBUG o.s.w.s.function.support.RouterFunctionMapping - 1 RouterFunction(s) in 'routerFunctionMapping'
+2025-07-05 00:09:40.488 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-07-05 00:09:40.510 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-07-05 00:09:40.560 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-07-05 00:09:40.578 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable tools capabilities, notification: true
+2025-07-05 00:09:40.580 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable resources capabilities, notification: true
+2025-07-05 00:09:40.580 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable prompts capabilities, notification: true
+2025-07-05 00:09:40.581 [restartedMain] INFO  o.s.a.m.s.autoconfigure.McpServerAutoConfiguration - Enable completions capabilities
+2025-07-05 00:09:40.707 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-05 00:09:40.841 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-07-05 00:09:40.843 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-05 00:09:40.850 [restartedMain] INFO  o.s.b.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-05 00:09:40.943 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-07-05 00:09:40.958 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-05 00:09:40.979 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-05 00:09:40.989 [restartedMain] INFO  com.example.agent.app.AgentApplication - Started AgentApplication in 3.022 seconds (process running for 3.362)
+2025-07-05 00:10:18.486 [http-nio-8080-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-05 00:10:18.486 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-07-05 00:10:18.486 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2025-07-05 00:10:18.486 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2025-07-05 00:10:18.486 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2025-07-05 00:10:18.487 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@36b58010
+2025-07-05 00:10:18.487 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@f3a6c89
+2025-07-05 00:10:18.487 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-07-05 00:10:18.487 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-07-05 00:10:18.494 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/ai/chat?message=%E4%BD%A0%E5%A5%BD", parameters={masked}
+2025-07-05 00:10:18.503 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.example.agent.pipeline.controller.ChatController#chat(String)
+2025-07-05 00:10:18.654 [http-nio-8080-exec-2] DEBUG org.springframework.web.client.DefaultRestClient - Writing [ChatCompletionRequest[messages=[ChatCompletionMessage[rawContent=你好, role=USER, name=null, toolCallId=null, toolCalls=null, refusal=null, audioOutput=null, annotations=null]], model=deepseek-reasoner, store=null, metadata=null, frequencyPenalty=null, logitBias=null, logprobs=null, topLogprobs=null, maxTokens=2048, maxCompletionTokens=null, n=null, outputModalities=null, audioParameters=null, presencePenalty=null, responseFormat=null, seed=null, serviceTier=null, stop=null, stream=false, streamOptions=null, temperature=0.7, topP=null, tools=null, toolChoice=null, parallelToolCalls=null, user=null, reasoningEffort=null, webSearchOptions=null]] as "application/json" with org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
+2025-07-05 00:10:32.521 [http-nio-8080-exec-2] DEBUG org.springframework.web.client.DefaultRestClient - Reading to [org.springframework.ai.openai.api.OpenAiApi$ChatCompletion]
+2025-07-05 00:10:32.534 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'text/plain', given [*/*] and supported [text/plain, */*, application/json, application/*+json]
+2025-07-05 00:10:32.535 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing ["你好呀！👋 很高兴见到你～我是你的AI助手，有什么我可以帮你的吗？无论是聊天、答疑、查资料，还是写点东西、出个主意，我都在线等你哦～😊 请讲吧！"]
+2025-07-05 00:10:32.538 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
