@@ -44,6 +44,11 @@ spring:
 # 服务器配置
 server:
   port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
 
 # 管理端点配置
 management:

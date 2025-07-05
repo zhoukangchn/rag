@@ -2,10 +2,13 @@ package com.example.agent.pipeline.step;
 
 import com.example.agent.core.dto.AgentContext;
 import com.example.agent.pipeline.template.AbstractPipelineStep;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.openai.OpenAiChatOptions;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -38,11 +41,14 @@ public class ModelInvocationStep extends AbstractPipelineStep {
     private double temperature;
     
     private final WebClient webClient;
+    private final ChatClient chatClient;
     
-    public ModelInvocationStep() {
+    @Autowired
+    public ModelInvocationStep(ChatClient.Builder chatClientBuilder) {
         this.webClient = WebClient.builder()
                 .codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(1024 * 1024))
                 .build();
+        this.chatClient = chatClientBuilder.build();
     }
     
     @Override
@@ -64,7 +70,7 @@ public class ModelInvocationStep extends AbstractPipelineStep {
                 return false;
             }
             
-            // 调用LLM
+            // 使用Spring AI ChatClient调用LLM
             String response = callLLM(context, systemPrompt, userPrompt);
             
             if (response == null) {
@@ -111,64 +117,36 @@ public class ModelInvocationStep extends AbstractPipelineStep {
     }
     
     /**
-     * 调用LLM
+     * 使用Spring AI ChatClient调用LLM
      */
     private String callLLM(AgentContext context, String systemPrompt, String userPrompt) {
         try {
-            // 构建请求体
-            Map<String, Object> requestBody = buildRequestBody(context, systemPrompt, userPrompt);
-            
-            // 发送请求
-            Mono<String> responseMono = webClient.post()
-                    .uri(llmEndpoint)
-                    .header("Content-Type", "application/json")
-                    .bodyValue(requestBody)
-                    .retrieve()
-                    .bodyToMono(String.class)
-                    .timeout(Duration.ofMillis(timeoutMillis));
-            
-            // 同步等待响应
-            String rawResponse = responseMono.block();
-            
-            // 解析响应
-            return parseResponse(rawResponse);
-            
+            String model = getModel(context);
+            int maxTokens = getMaxTokens(context);
+            double temperature = getTemperature(context);
+            // 组装prompt
+            StringBuilder promptBuilder = new StringBuilder();
+            if (systemPrompt != null && !systemPrompt.isEmpty()) {
+                promptBuilder.append(systemPrompt).append("\n");
+            }
+            if (userPrompt != null && !userPrompt.isEmpty()) {
+                promptBuilder.append(userPrompt);
+            }
+            String prompt = promptBuilder.toString();
+            // 调用ChatClient
+            return chatClient.prompt()
+                    .options(OpenAiChatOptions.builder()
+                        .model(model)
+                        .maxTokens(maxTokens)
+                        .temperature(temperature)
+                        .build())
+                    .user(prompt)
+                    .call()
+                    .content();
         } catch (Exception e) {
-            logger.error("LLM调用异常", e);
+            logger.error("Spring AI ChatClient调用异常", e);
             return null;
         }
-    }
-    
-    /**
-     * 构建请求体
-     */
-    private Map<String, Object> buildRequestBody(AgentContext context, String systemPrompt, String userPrompt) {
-        Map<String, Object> requestBody = new HashMap<>();
-        
-        // 基础参数
-        requestBody.put("model", getModel(context));
-        requestBody.put("max_tokens", getMaxTokens(context));
-        requestBody.put("temperature", getTemperature(context));
-        requestBody.put("stream", false); // 暂不支持流式
-        
-        // 构建消息数组
-        java.util.List<Map<String, String>> messages = new java.util.ArrayList<>();
-        
-        // 系统消息
-        Map<String, String> systemMessage = new HashMap<>();
-        systemMessage.put("role", "system");
-        systemMessage.put("content", systemPrompt);
-        messages.add(systemMessage);
-        
-        // 用户消息
-        Map<String, String> userMessage = new HashMap<>();
-        userMessage.put("role", "user");
-        userMessage.put("content", userPrompt);
-        messages.add(userMessage);
-        
-        requestBody.put("messages", messages);
-        
-        return requestBody;
     }
     
     /**

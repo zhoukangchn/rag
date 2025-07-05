@@ -5,6 +5,7 @@ import com.example.agent.core.step.PipelineStep;
 import com.example.agent.pipeline.chain.ChainContext;
 import com.example.agent.pipeline.chain.PipelineChain;
 import com.example.agent.pipeline.step.*;
+import com.example.agent.pipeline.streaming.ProgressListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -151,6 +152,109 @@ public class AgentPipelineService {
                                                                String sessionId, String chainType, 
                                                                Map<String, Object> options) {
         return CompletableFuture.supplyAsync(() -> process(query, userId, sessionId, chainType, options));
+    }
+    
+    /**
+     * 异步处理查询（带进度监听器）
+     */
+    public CompletableFuture<AgentProcessingResult> processQueryAsync(String query, 
+                                                                     ProgressListener progressListener) {
+        return CompletableFuture.supplyAsync(() -> processWithProgress(query, progressListener));
+    }
+    
+    /**
+     * 带进度监听器的处理方法
+     */
+    private AgentProcessingResult processWithProgress(String query, ProgressListener progressListener) {
+        long startTime = System.currentTimeMillis();
+        String queryId = generateQueryId();
+        
+        try {
+            progressListener.onStepStarted("initialization");
+            
+            // 创建Agent上下文
+            AgentContext agentContext = createAgentContext(query, "system", "stream", queryId, null);
+            
+            // 获取处理链
+            PipelineChain chain = getOrCreateChain("standard", agentContext);
+            
+            progressListener.onStepCompleted("initialization");
+            
+            // 执行处理链（带进度监听）
+            ChainContext chainContext = executeChainWithProgress(chain, agentContext, progressListener);
+            
+            // 构建结果
+            AgentProcessingResult result = buildResult(agentContext, chainContext);
+            
+            // 记录统计信息
+            recordStatistics("standard", chainContext);
+            
+            long duration = System.currentTimeMillis() - startTime;
+            logger.info("流式处理完成 - 查询ID: {}, 耗时: {}ms, 成功: {}", 
+                    queryId, duration, result.isSuccessful());
+            
+            return result;
+            
+        } catch (Exception e) {
+            logger.error("流式处理异常 - 查询ID: {}", queryId, e);
+            
+            long duration = System.currentTimeMillis() - startTime;
+            return AgentProcessingResult.error(queryId, "处理失败: " + e.getMessage(), duration);
+        }
+    }
+    
+    /**
+     * 带进度监听器的处理链执行
+     */
+    private ChainContext executeChainWithProgress(PipelineChain chain, AgentContext agentContext, 
+                                                 ProgressListener progressListener) {
+        ChainContext chainContext = new ChainContext(agentContext, chain.getChainId(), chain.getChainName());
+        chainContext.start();
+        
+        List<PipelineStep> steps = chain.getSteps();
+        int totalSteps = steps.size();
+        boolean allStepsSuccessful = true;
+        
+        for (int i = 0; i < totalSteps; i++) {
+            PipelineStep step = steps.get(i);
+            String stepName = step.getStepName();
+            
+            try {
+                progressListener.onStepStarted(stepName);
+                
+                long stepStartTime = System.currentTimeMillis();
+                
+                // 执行步骤
+                step.execute(agentContext);
+                
+                long stepDuration = System.currentTimeMillis() - stepStartTime;
+                chainContext.recordStepExecution(stepName, stepDuration, true);
+                
+                progressListener.onStepCompleted(stepName);
+                
+                // 更新进度
+                double progress = ((double) (i + 1) / totalSteps) * 100;
+                progressListener.onProgress(stepName, progress, 
+                        String.format("完成步骤 %d/%d", i + 1, totalSteps));
+                
+            } catch (Exception e) {
+                logger.error("步骤执行失败: {}", stepName, e);
+                progressListener.onStepFailed(stepName, e.getMessage());
+                
+                // 记录错误状态
+                long stepDuration = System.currentTimeMillis() - System.currentTimeMillis();
+                chainContext.recordStepExecution(stepName, stepDuration, false);
+                chainContext.setException(e);
+                
+                allStepsSuccessful = false;
+                break;
+            }
+        }
+        
+        // 完成执行
+        chainContext.complete(allStepsSuccessful);
+        
+        return chainContext;
     }
     
     /**
