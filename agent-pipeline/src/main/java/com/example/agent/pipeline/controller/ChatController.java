@@ -222,6 +222,70 @@ public class ChatController {
         // 默认使用非流式响应
         return false;
     }
+    
+    /**
+     * 创建由Flux驱动的SseEmitter
+     * 通用方法，减少代码重复
+     */
+    private SseEmitter createFluxDrivenSseEmitter(String message, String userId, String sessionId, 
+                                                 String chainType, Map<String, Object> options) {
+        // 创建SseEmitter
+        SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
+        
+        // 创建Flux监听器
+        FluxProgressListener progressListener = fluxStreamingService.createListener(sessionId);
+        
+        // 启动异步处理
+        agentPipelineService.processQueryAsync(message, userId, sessionId, chainType, options, progressListener)
+                .whenComplete((result, throwable) -> {
+                    if (throwable != null) {
+                        progressListener.onError("Processing failed: " + throwable.getMessage());
+                    } else {
+                        progressListener.onData("final_result", result);
+                        progressListener.onCompleted("Query processed successfully");
+                    }
+                });
+        
+        // 使用Flux驱动SseEmitter
+        fluxStreamingService.getSseEventStreamWithHeartbeat(sessionId)
+                .doOnNext(event -> {
+                    try {
+                        emitter.send(event);
+                    } catch (Exception e) {
+                        emitter.completeWithError(e);
+                    }
+                })
+                .doOnError(error -> {
+                    try {
+                        emitter.completeWithError(error);
+                    } catch (Exception e) {
+                        // SseEmitter already completed
+                    }
+                })
+                .doOnComplete(() -> {
+                    try {
+                        emitter.complete();
+                    } catch (Exception e) {
+                        // SseEmitter already completed
+                    }
+                })
+                .subscribe();
+        
+        // 设置SseEmitter的超时和完成回调
+        emitter.onTimeout(() -> {
+            fluxStreamingService.closeListener(sessionId).subscribe();
+        });
+        
+        emitter.onCompletion(() -> {
+            fluxStreamingService.closeListener(sessionId).subscribe();
+        });
+        
+        emitter.onError((throwable) -> {
+            fluxStreamingService.closeListener(sessionId).subscribe();
+        });
+        
+        return emitter;
+    }
 
     @GetMapping("/ai/chat")
     public String chat(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
@@ -592,84 +656,54 @@ public class ChatController {
     // ========================= Flux 响应式流端点 =========================
     
     /**
-     * Flux流式查询端点 - JSON格式
+     * 响应式流式查询端点 - 使用SseEmitter，内部由Flux驱动
      */
-    @GetMapping(value = "/ai/flux/query", produces = MediaType.APPLICATION_NDJSON_VALUE)
-    public Flux<String> fluxQueryJson(@RequestParam(value = "message") String message,
-                                     @RequestParam(value = "sessionId", required = false) String sessionId,
-                                     @RequestParam(value = "userId", required = false) String userId,
-                                     @RequestParam(value = "chainType", required = false) String chainType,
-                                     @RequestParam(value = "options", required = false) Map<String, Object> options) {
+    @GetMapping(value = "/ai/reactive/query", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public SseEmitter reactiveQueryWithSseEmitter(@RequestParam(value = "message") String message,
+                                                 @RequestParam(value = "sessionId", required = false) String sessionId,
+                                                 @RequestParam(value = "userId", required = false) String userId,
+                                                 @RequestParam(value = "chainType", required = false) String chainType,
+                                                 @RequestParam(value = "options", required = false) Map<String, Object> options) {
         
         // 生成会话ID（如果未提供）
         if (sessionId == null) {
             sessionId = "flux_" + UUID.randomUUID().toString();
         }
         
-        final String finalSessionId = sessionId;
         final String finalUserId = userId != null ? userId : "anonymous";
         final String finalChainType = chainType != null ? chainType : "standard";
         final Map<String, Object> finalOptions = options != null ? options : new HashMap<>();
         
-        // 创建Flux监听器
-        FluxProgressListener progressListener = fluxStreamingService.createListener(finalSessionId);
-        
-        // 启动异步处理
-        agentPipelineService.processQueryAsync(message, finalUserId, finalSessionId, finalChainType, finalOptions, progressListener)
-                .whenComplete((result, throwable) -> {
-                    if (throwable != null) {
-                        progressListener.onError("Processing failed: " + throwable.getMessage());
-                    } else {
-                        progressListener.onData("final_result", result);
-                        progressListener.onCompleted("Query processed successfully");
-                    }
-                });
-        
-        return fluxStreamingService.getJsonEventStream(finalSessionId);
+        return createFluxDrivenSseEmitter(message, finalUserId, sessionId, finalChainType, finalOptions);
     }
     
     /**
-     * Flux流式查询端点 - SSE格式
+     * 响应式流式查询端点 - 使用SseEmitter，内部由Flux驱动（备用端点）
      */
-    @GetMapping(value = "/ai/flux/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<ServerSentEvent<String>> fluxQuerySse(@RequestParam(value = "message") String message,
-                                                     @RequestParam(value = "sessionId", required = false) String sessionId,
-                                                     @RequestParam(value = "userId", required = false) String userId,
-                                                     @RequestParam(value = "chainType", required = false) String chainType,
-                                                     @RequestParam(value = "options", required = false) Map<String, Object> options) {
+    @GetMapping(value = "/ai/reactive/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public SseEmitter reactiveQueryStreamWithSseEmitter(@RequestParam(value = "message") String message,
+                                                        @RequestParam(value = "sessionId", required = false) String sessionId,
+                                                        @RequestParam(value = "userId", required = false) String userId,
+                                                        @RequestParam(value = "chainType", required = false) String chainType,
+                                                        @RequestParam(value = "options", required = false) Map<String, Object> options) {
         
         // 生成会话ID（如果未提供）
         if (sessionId == null) {
             sessionId = "flux_" + UUID.randomUUID().toString();
         }
         
-        final String finalSessionId = sessionId;
         final String finalUserId = userId != null ? userId : "anonymous";
         final String finalChainType = chainType != null ? chainType : "standard";
         final Map<String, Object> finalOptions = options != null ? options : new HashMap<>();
         
-        // 创建Flux监听器
-        FluxProgressListener progressListener = fluxStreamingService.createListener(finalSessionId);
-        
-        // 启动异步处理
-        agentPipelineService.processQueryAsync(message, finalUserId, finalSessionId, finalChainType, finalOptions, progressListener)
-                .whenComplete((result, throwable) -> {
-                    if (throwable != null) {
-                        progressListener.onError("Processing failed: " + throwable.getMessage());
-                    } else {
-                        progressListener.onData("final_result", result);
-                        progressListener.onCompleted("Query processed successfully");
-                    }
-                });
-        
-        return fluxStreamingService.getSseEventStreamWithHeartbeat(finalSessionId);
+        return createFluxDrivenSseEmitter(message, finalUserId, sessionId, finalChainType, finalOptions);
     }
     
     /**
-     * Flux流式查询端点 - POST版本（JSON格式）
+     * 响应式流式查询端点 - POST版本，使用SseEmitter，内部由Flux驱动
      */
-    @PostMapping(value = "/ai/flux/query", produces = MediaType.APPLICATION_NDJSON_VALUE)
-    public Flux<String> fluxQueryJsonPost(@RequestBody FluxQueryRequest request) {
+    @PostMapping(value = "/ai/reactive/query", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public SseEmitter reactiveQueryPostWithSseEmitter(@RequestBody FluxQueryRequest request) {
         
         // 生成会话ID（如果未提供）
         String sessionId = request.getSessionId();
@@ -677,36 +711,20 @@ public class ChatController {
             sessionId = "flux_" + UUID.randomUUID().toString();
         }
         
-        final String finalSessionId = sessionId;
-        
-        // 创建Flux监听器
-        FluxProgressListener progressListener = fluxStreamingService.createListener(finalSessionId);
-        
-        // 启动异步处理
-        agentPipelineService.processQueryAsync(
+        return createFluxDrivenSseEmitter(
                 request.getMessage(), 
                 request.getUserId() != null ? request.getUserId() : "anonymous",
-                finalSessionId,
+                sessionId,
                 request.getChainType() != null ? request.getChainType() : "standard",
-                request.getOptions() != null ? request.getOptions() : new HashMap<>(),
-                progressListener)
-                .whenComplete((result, throwable) -> {
-                    if (throwable != null) {
-                        progressListener.onError("Processing failed: " + throwable.getMessage());
-                    } else {
-                        progressListener.onData("final_result", result);
-                        progressListener.onCompleted("Query processed successfully");
-                    }
-                });
-        
-        return fluxStreamingService.getJsonEventStream(finalSessionId);
+                request.getOptions() != null ? request.getOptions() : new HashMap<>()
+        );
     }
     
     /**
-     * Flux流式查询端点 - POST版本（SSE格式）
+     * 响应式流式查询端点 - POST版本（备用），使用SseEmitter，内部由Flux驱动
      */
-    @PostMapping(value = "/ai/flux/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<ServerSentEvent<String>> fluxQuerySsePost(@RequestBody FluxQueryRequest request) {
+    @PostMapping(value = "/ai/reactive/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public SseEmitter reactiveQueryStreamPostWithSseEmitter(@RequestBody FluxQueryRequest request) {
         
         // 生成会话ID（如果未提供）
         String sessionId = request.getSessionId();
@@ -714,36 +732,20 @@ public class ChatController {
             sessionId = "flux_" + UUID.randomUUID().toString();
         }
         
-        final String finalSessionId = sessionId;
-        
-        // 创建Flux监听器
-        FluxProgressListener progressListener = fluxStreamingService.createListener(finalSessionId);
-        
-        // 启动异步处理
-        agentPipelineService.processQueryAsync(
+        return createFluxDrivenSseEmitter(
                 request.getMessage(), 
                 request.getUserId() != null ? request.getUserId() : "anonymous",
-                finalSessionId,
+                sessionId,
                 request.getChainType() != null ? request.getChainType() : "standard",
-                request.getOptions() != null ? request.getOptions() : new HashMap<>(),
-                progressListener)
-                .whenComplete((result, throwable) -> {
-                    if (throwable != null) {
-                        progressListener.onError("Processing failed: " + throwable.getMessage());
-                    } else {
-                        progressListener.onData("final_result", result);
-                        progressListener.onCompleted("Query processed successfully");
-                    }
-                });
-        
-        return fluxStreamingService.getSseEventStreamWithHeartbeat(finalSessionId);
+                request.getOptions() != null ? request.getOptions() : new HashMap<>()
+        );
     }
     
     /**
-     * 获取Flux流式处理状态
+     * 获取响应式流式处理状态
      */
-    @GetMapping("/ai/flux/status")
-    public Mono<Map<String, Object>> getFluxStreamingStatus(@RequestParam(value = "sessionId", required = false) String sessionId) {
+    @GetMapping("/ai/reactive/status")
+    public Mono<Map<String, Object>> getReactiveStreamingStatus(@RequestParam(value = "sessionId", required = false) String sessionId) {
         return Mono.fromCallable(() -> {
             Map<String, Object> status = new HashMap<>();
             
@@ -758,15 +760,15 @@ public class ChatController {
     }
     
     /**
-     * 关闭Flux监听器
+     * 关闭响应式监听器
      */
-    @PostMapping("/ai/flux/close")
-    public Mono<Map<String, Object>> closeFluxListener(@RequestParam(value = "sessionId") String sessionId) {
+    @PostMapping("/ai/reactive/close")
+    public Mono<Map<String, Object>> closeReactiveListener(@RequestParam(value = "sessionId") String sessionId) {
         return fluxStreamingService.closeListener(sessionId)
                 .then(Mono.fromCallable(() -> {
                     Map<String, Object> result = new HashMap<>();
                     result.put("success", true);
-                    result.put("message", "Flux listener closed successfully");
+                    result.put("message", "Reactive listener closed successfully");
                     result.put("sessionId", sessionId);
                     result.put("timestamp", System.currentTimeMillis());
                     return result;
@@ -774,7 +776,7 @@ public class ChatController {
                 .onErrorResume(error -> {
                     Map<String, Object> result = new HashMap<>();
                     result.put("success", false);
-                    result.put("message", "Failed to close flux listener: " + error.getMessage());
+                    result.put("message", "Failed to close reactive listener: " + error.getMessage());
                     result.put("sessionId", sessionId);
                     result.put("timestamp", System.currentTimeMillis());
                     return Mono.just(result);
@@ -782,7 +784,7 @@ public class ChatController {
     }
     
     /**
-     * Flux查询请求对象
+     * 响应式查询请求对象
      */
     public static class FluxQueryRequest {
         private String message;
