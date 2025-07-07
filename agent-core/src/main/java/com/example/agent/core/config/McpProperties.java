@@ -313,11 +313,6 @@ public class McpProperties {
          */
         private boolean validationEnabled = true;
 
-        /**
-         * 是否启用权限检查
-         */
-        private boolean permissionCheckEnabled = true;
-
         public Duration getDiscoveryTimeout() {
             return discoveryTimeout;
         }
@@ -350,14 +345,6 @@ public class McpProperties {
             this.validationEnabled = validationEnabled;
         }
 
-        public boolean isPermissionCheckEnabled() {
-            return permissionCheckEnabled;
-        }
-
-        public void setPermissionCheckEnabled(boolean permissionCheckEnabled) {
-            this.permissionCheckEnabled = permissionCheckEnabled;
-        }
-
         @Override
         public String toString() {
             return "ToolProperties{" +
@@ -365,7 +352,6 @@ public class McpProperties {
                     ", executionTimeout=" + executionTimeout +
                     ", maxTools=" + maxTools +
                     ", validationEnabled=" + validationEnabled +
-                    ", permissionCheckEnabled=" + permissionCheckEnabled +
                     '}';
         }
     }

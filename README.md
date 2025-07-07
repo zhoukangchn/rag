@@ -333,17 +333,17 @@ logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level [%X{requestId
 
 ## 🔐 安全考虑
 
-### 认证与授权
+### API配置
 
-- API密钥管理
-- 用户会话验证
-- MCP连接安全
+- 简化的API密钥配置
+- 环境变量支持
+- 多API提供商支持
 
 ### 数据保护
 
-- 敏感信息脱敏
-- 传输加密
-- 存储加密
+- 输入数据验证
+- 输出内容过滤
+- 传输数据安全
 
 ### 防护措施
 

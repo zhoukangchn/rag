@@ -163,6 +163,66 @@ public class AgentPipelineService {
     }
     
     /**
+     * 异步处理查询（完整参数，带进度监听器）
+     */
+    public CompletableFuture<AgentProcessingResult> processQueryAsync(String query, String userId, 
+                                                                     String sessionId, String chainType, 
+                                                                     Map<String, Object> options,
+                                                                     ProgressListener progressListener) {
+        return CompletableFuture.supplyAsync(() -> 
+            processWithProgress(query, userId, sessionId, chainType, options, progressListener)
+        );
+    }
+    
+    /**
+     * 带进度监听器的处理方法（完整参数版本）
+     */
+    private AgentProcessingResult processWithProgress(String query, String userId, String sessionId, 
+                                                     String chainType, Map<String, Object> options,
+                                                     ProgressListener progressListener) {
+        long startTime = System.currentTimeMillis();
+        String queryId = generateQueryId();
+        
+        try {
+            progressListener.onStepStarted("initialization");
+            
+            // 创建Agent上下文
+            AgentContext agentContext = createAgentContext(query, userId, sessionId, queryId, options);
+            
+            // 将进度监听器添加到上下文中
+            agentContext.addExtensionProperty("progressListener", progressListener);
+            agentContext.addExtensionProperty("streamingEnabled", true);
+            
+            // 获取处理链
+            PipelineChain chain = getOrCreateChain(chainType, agentContext);
+            
+            progressListener.onStepCompleted("initialization");
+            
+            // 执行处理链（带进度监听）
+            ChainContext chainContext = executeChainWithProgress(chain, agentContext, progressListener);
+            
+            // 构建结果
+            AgentProcessingResult result = buildResult(agentContext, chainContext);
+            
+            // 记录统计信息
+            recordStatistics(chainType, chainContext);
+            
+            long duration = System.currentTimeMillis() - startTime;
+            logger.info("流式处理完成 - 查询ID: {}, 耗时: {}ms, 成功: {}", 
+                    queryId, duration, result.isSuccessful());
+            
+            return result;
+            
+        } catch (Exception e) {
+            logger.error("流式处理异常 - 查询ID: {}", queryId, e);
+            progressListener.onError("处理失败: " + e.getMessage());
+            
+            long duration = System.currentTimeMillis() - startTime;
+            return AgentProcessingResult.error(queryId, "处理失败: " + e.getMessage(), duration);
+        }
+    }
+    
+    /**
      * 带进度监听器的处理方法
      */
     private AgentProcessingResult processWithProgress(String query, ProgressListener progressListener) {

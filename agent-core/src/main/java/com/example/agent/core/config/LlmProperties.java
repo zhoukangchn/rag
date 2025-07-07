@@ -298,8 +298,7 @@ public class LlmProperties {
 
         @Override
         public String toString() {
-            return "ApiEndpointProperties{endpoint='" + endpoint + "', key='" + 
-                   (key != null && !key.isEmpty() ? "***" : "empty") + "'}";
+            return "ApiEndpointProperties{endpoint='" + endpoint + "', key='" + key + "'}";
         }
     }
 

@@ -46,6 +46,12 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
         
+        <!-- Actuator for monitoring -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        
         <!-- 配置处理 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

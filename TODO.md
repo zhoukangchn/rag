@@ -4,10 +4,10 @@
 基于设计文档（ragAgentPrd.md）实现Spring Boot知识Agent，采用领域驱动的多模块架构，支持责任链处理、多源知识检索、双向流式处理和MCP协议。
 
 ## 🎯 任务进度统计
-- 总任务数：31
-- 已完成：16/31 (51.6%)
-- 进行中：0/31 (0%)
-- 待开始：15/31 (48.4%)
+- 总任务数：33
+- 已完成：18/33 (54.5%)
+- 进行中：0/33 (0%)
+- 待开始：15/33 (45.5%)
 
 ---
 
@@ -98,7 +98,7 @@
 - **预计工期**: 1天
 - **依赖**: 模块3-6全部完成
 
-### 阶段2：核心功能模块 (8-16) ✅ 已完成
+### 阶段2：核心功能模块 (8-18) ✅ 已完成
 
 #### ✅ 8. knowledge-repository
 - **状态**: 已完成
@@ -199,7 +199,40 @@
 - **预计工期**: 2天
 - **依赖**: streaming-support
 
-#### ✅ 15. context-builder
+#### ✅ 15. unified-streaming
+- **状态**: 已完成
+- **描述**: 合并SSE连接和流式处理查询
+- **完成内容**:
+  - ✅ 在ChatController中新增合并端点 `/ai/stream` (GET和POST版本)
+  - ✅ 支持一次调用完成连接建立和查询处理，简化客户端使用
+  - ✅ 自动生成会话ID，无需手动管理会话状态
+  - ✅ 支持自动连接关闭配置，减少资源泄漏
+  - ✅ 保留原有端点以维持向后兼容性
+  - ✅ 创建StreamQueryRequest请求类，支持更丰富的配置选项
+  - ✅ 创建新的测试页面 `stream-unified-test.html` 演示合并功能
+  - ✅ 更新现有测试页面 `sse-test.html` 添加新功能入口链接
+  - ✅ 改进错误处理和连接管理，提供更好的用户体验
+- **预计工期**: 1天
+- **依赖**: streaming-support, rest-controllers
+
+#### ✅ 16. unified-interface
+- **状态**: 已完成
+- **描述**: 统一流式和非流式接口
+- **完成内容**:
+  - ✅ 在ChatController中新增统一端点 `/ai/query` (GET和POST版本)
+  - ✅ 根据Accept头自动选择流式或非流式响应模式
+  - ✅ 支持stream参数显式控制响应类型（stream=true/false）
+  - ✅ 智能模式：Accept: application/json → 非流式，Accept: text/event-stream → 流式
+  - ✅ 支持完整的参数配置：userId、sessionId、chainType、options等
+  - ✅ 在AgentPipelineService中添加支持完整参数的processQueryAsync重载方法
+  - ✅ 创建UnifiedQueryRequest和UnifiedQueryResponse类，支持统一的请求响应格式
+  - ✅ 保持向后兼容性，所有原有端点继续可用
+  - ✅ 创建comprehensive测试页面 `unified-query-test.html` 演示统一接口功能
+  - ✅ 更新所有测试页面添加交叉链接和功能对比说明
+- **预计工期**: 1.5天
+- **依赖**: unified-streaming, rest-controllers
+
+#### ✅ 17. context-builder
 - **状态**: 已完成
 - **描述**: 实现AgentContext建造者
 - **完成内容**:
@@ -209,7 +242,7 @@
 - **预计工期**: 1.5天
 - **依赖**: agent-core-module
 
-#### ✅ 16. configuration-properties
+#### ✅ 17. configuration-properties
 - **状态**: 已完成
 - **描述**: 外部化配置管理
 - **完成内容**:
@@ -224,9 +257,9 @@
 - **预计工期**: 1天
 - **依赖**: agent-app-config
 
-### 阶段3：扩展功能 (17-23)
+### 阶段3：扩展功能 (19-25)
 
-#### ⏳ 17. mcp-server-impl
+#### ⏳ 19. mcp-server-impl
 - **状态**: 待开始
 - **描述**: 实现MCP服务器
 - **任务内容**:
@@ -237,7 +270,7 @@
 - **预计工期**: 3天
 - **依赖**: agent-mcp-structure
 
-#### ⏳ 18. mcp-tools
+#### ⏳ 19. mcp-tools
 - **状态**: 待开始
 - **描述**: 实现MCP工具集
 - **任务内容**:
@@ -248,7 +281,7 @@
 - **预计工期**: 2天
 - **依赖**: mcp-server-impl, knowledge-strategy-impl
 
-#### ⏳ 19. spring-ai-integration
+#### ⏳ 20. spring-ai-integration
 - **状态**: 待开始
 - **描述**: 集成Spring AI框架
 - **任务内容**:
@@ -259,7 +292,7 @@
 - **预计工期**: 2天
 - **依赖**: llm-client
 
-#### ⏳ 20. h2-database-setup
+#### ⏳ 21. h2-database-setup
 - **状态**: 待开始
 - **描述**: 配置H2数据库
 - **任务内容**:
@@ -270,7 +303,7 @@
 - **预计工期**: 1天
 - **依赖**: configuration-properties
 
-#### ⏳ 21. global-exception-handler
+#### ⏳ 22. global-exception-handler
 - **状态**: 待开始
 - **描述**: 全局异常处理
 - **任务内容**:
@@ -281,7 +314,7 @@
 - **预计工期**: 1.5天
 - **依赖**: rest-controllers
 
-#### ⏳ 22. logging-tracing
+#### ⏳ 23. logging-tracing
 - **状态**: 待开始
 - **描述**: 日志和链路追踪
 - **任务内容**:
@@ -292,7 +325,7 @@
 - **预计工期**: 1.5天
 - **依赖**: global-exception-handler
 
-#### ⏳ 23. monitoring-metrics
+#### ⏳ 24. monitoring-metrics
 - **状态**: 待开始
 - **描述**: 监控指标集成
 - **任务内容**:
@@ -303,9 +336,9 @@
 - **预计工期**: 1.5天
 - **依赖**: logging-tracing
 
-### 阶段4：生产就绪 (24-31)
+### 阶段4：生产就绪 (25-32)
 
-#### ⏳ 24. security-config
+#### ⏳ 25. security-config
 - **状态**: 待开始
 - **描述**: 安全配置
 - **任务内容**:
@@ -316,7 +349,7 @@
 - **预计工期**: 2天
 - **依赖**: rest-controllers
 
-#### ⏳ 25. integration-tests
+#### ⏳ 26. integration-tests
 - **状态**: 待开始
 - **描述**: 集成测试
 - **任务内容**:
@@ -327,7 +360,7 @@
 - **预计工期**: 3天
 - **依赖**: 所有核心功能模块
 
-#### ⏳ 26. unit-tests
+#### ⏳ 27. unit-tests
 - **状态**: 待开始
 - **描述**: 单元测试
 - **任务内容**:
@@ -338,7 +371,7 @@
 - **预计工期**: 2天
 - **依赖**: integration-tests
 
-#### ⏳ 27. fix-jacoco-java21
+#### ⏳ 28. fix-jacoco-java21
 - **状态**: 待开始
 - **描述**: 修复JaCoCo与Java 21兼容性
 - **任务内容**:
@@ -349,7 +382,7 @@
 - **预计工期**: 0.5天
 - **依赖**: unit-tests
 
-#### ⏳ 28. docker-deployment
+#### ⏳ 29. docker-deployment
 - **状态**: 待开始
 - **描述**: Docker部署配置
 - **任务内容**:
@@ -360,7 +393,7 @@
 - **预计工期**: 1.5天
 - **依赖**: fix-jacoco-java21
 
-#### ⏳ 29. kubernetes-manifests
+#### ⏳ 30. kubernetes-manifests
 - **状态**: 待开始
 - **描述**: Kubernetes部署清单
 - **任务内容**:
@@ -371,7 +404,7 @@
 - **预计工期**: 1.5天  
 - **依赖**: docker-deployment
 
-#### ⏳ 30. performance-optimization
+#### ⏳ 31. performance-optimization
 - **状态**: 待开始
 - **描述**: 性能优化
 - **任务内容**:
@@ -382,7 +415,7 @@
 - **预计工期**: 2天
 - **依赖**: kubernetes-manifests
 
-#### ⏳ 31. documentation-completion
+#### ⏳ 32. documentation-completion
 - **状态**: 待开始
 - **描述**: 文档完善
 - **任务内容**:
@@ -404,17 +437,17 @@
 
 ### 🎯 里程碑2：核心功能完成 (第3-5周) ✅ 已完成
 - **目标**: 完成知识检索和处理流程核心功能
-- **包含任务**: 8-16
+- **包含任务**: 8-18
 - **交付物**: 基本的问答和知识检索功能
 
 ### 🎯 里程碑3：扩展功能完成 (第6-7周) ⏳ 进行中
 - **目标**: 完成MCP协议支持和监控集成
-- **包含任务**: 17-23  
+- **包含任务**: 19-25  
 - **交付物**: 完整功能的Agent系统
 
 ### 🎯 里程碑4：生产就绪 (第8-9周)
 - **目标**: 完成测试、安全、部署等生产就绪配置
-- **包含任务**: 24-31
+- **包含任务**: 26-33
 - **交付物**: 可生产部署的完整系统
 
 ---
@@ -456,6 +489,28 @@
   - 提供多种预定义处理链和异步处理能力
 
 **2025-07-05**
+- 完成任务15：unified-streaming（合并SSE连接和流式处理查询）
+  - 在ChatController中新增合并端点 `/ai/stream` (GET和POST版本)
+  - 支持一次调用完成连接建立和查询处理，简化客户端使用
+  - 自动生成会话ID，无需手动管理会话状态
+  - 支持自动连接关闭配置，减少资源泄漏
+  - 保留原有端点以维持向后兼容性
+  - 创建新的测试页面演示合并功能
+  - 更新现有测试页面添加新功能入口链接
+
+- 完成任务16：unified-interface（统一流式和非流式接口）
+  - 在ChatController中新增统一端点 `/ai/query` (GET和POST版本)
+  - 根据Accept头自动选择流式或非流式响应模式
+  - 支持stream参数显式控制响应类型（stream=true/false）
+  - 智能模式：Accept: application/json → 非流式，Accept: text/event-stream → 流式
+  - 支持完整的参数配置：userId、sessionId、chainType、options等
+  - 在AgentPipelineService中添加支持完整参数的processQueryAsync重载方法
+  - 创建UnifiedQueryRequest和UnifiedQueryResponse类，支持统一的请求响应格式
+  - 保持向后兼容性，所有原有端点继续可用
+  - 创建comprehensive测试页面 `unified-query-test.html` 演示统一接口功能
+  - 更新所有测试页面添加交叉链接和功能对比说明
+
+**2025-01-XX**
 - 完成任务12：streaming-support（实现双向流式处理支持）
   - 创建LlmStreamingClient流式客户端，支持WebClient响应式处理
   - 增强ModelInvocationStep支持流式和非流式模式自动选择

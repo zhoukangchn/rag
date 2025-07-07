@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flux 响应式流测试</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .header p {
+            margin: 10px 0 0;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .test-section {
+            margin-bottom: 40px;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e1e5e9;
+            font-weight: 600;
+            color: #495057;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-content {
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+        
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+        }
+        
+        .btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+        }
+        
+        .btn-danger:hover {
+            background: #c82333;
+        }
+        
+        .btn-success {
+            background: #28a745;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+        }
+        
+        .status {
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .status.disconnected {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .status.connecting {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .status.connected {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status.processing {
+            background: #cce7ff;
+            color: #004085;
+            border: 1px solid #b8daff;
+        }
+        
+        .event-log {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+            font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        .log-entry {
+            margin-bottom: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .log-entry.step-started {
+            background: #e3f2fd;
+            border-left-color: #2196f3;
+        }
+        
+        .log-entry.step-completed {
+            background: #e8f5e8;
+            border-left-color: #4caf50;
+        }
+        
+        .log-entry.step-failed {
+            background: #ffebee;
+            border-left-color: #f44336;
+        }
+        
+        .log-entry.progress {
+            background: #fff3e0;
+            border-left-color: #ff9800;
+        }
+        
+        .log-entry.data {
+            background: #f3e5f5;
+            border-left-color: #9c27b0;
+        }
+        
+        .log-entry.error {
+            background: #ffebee;
+            border-left-color: #f44336;
+            font-weight: 600;
+        }
+        
+        .log-entry.completed {
+            background: #e8f5e8;
+            border-left-color: #4caf50;
+            font-weight: 600;
+        }
+        
+        .timestamp {
+            color: #6c757d;
+            font-size: 11px;
+            float: right;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                flex-direction: column;
+            }
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .metric-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+        
+        .metric-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #007bff;
+            display: block;
+        }
+        
+        .metric-label {
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌊 Flux 响应式流测试</h1>
+            <p>测试基于Spring WebFlux的响应式流监听器实现</p>
+        </div>
+        
+        <div class="content">
+            <!-- 测试参数配置 -->
+            <div class="test-section">
+                <div class="section-header">
+                    <span>📝 测试参数配置</span>
+                </div>
+                <div class="section-content">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="message">测试消息</label>
+                            <textarea id="message" placeholder="输入要测试的消息...">介绍一下Spring WebFlux的响应式编程模型</textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="userId">用户ID</label>
+                            <input type="text" id="userId" value="test-user" placeholder="用户标识">
+                        </div>
+                        <div class="form-group">
+                            <label for="chainType">处理链类型</label>
+                            <select id="chainType">
+                                <option value="standard">标准处理链</option>
+                                <option value="advanced">高级处理链</option>
+                                <option value="fast">快速处理链</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 性能指标 -->
+            <div class="test-section">
+                <div class="section-header">
+                    <span>📊 性能指标</span>
+                    <button class="btn btn-success" onclick="clearMetrics()">清除指标</button>
+                </div>
+                <div class="section-content">
+                    <div class="metrics">
+                        <div class="metric-card">
+                            <span class="metric-value" id="totalRequests">0</span>
+                            <div class="metric-label">总请求数</div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value" id="avgResponseTime">0ms</span>
+                            <div class="metric-label">平均响应时间</div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value" id="successRate">0%</span>
+                            <div class="metric-label">成功率</div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value" id="activeStreams">0</span>
+                            <div class="metric-label">活跃流数</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Flux 对比测试 -->
+            <div class="test-section">
+                <div class="section-header">
+                    <span>🔄 Flux 对比测试</span>
+                </div>
+                <div class="section-content">
+                    <div class="comparison-grid">
+                        <!-- JSON 流测试 -->
+                        <div>
+                            <h3>📋 JSON 流 (NDJSON)</h3>
+                            <div class="status disconnected" id="jsonStatus">未连接</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="jsonProgress"></div>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <button class="btn" onclick="startJsonStream()" id="jsonStartBtn">开始 JSON 流</button>
+                                <button class="btn btn-danger" onclick="stopJsonStream()" id="jsonStopBtn" disabled>停止流</button>
+                            </div>
+                            <div class="event-log" id="jsonLog"></div>
+                        </div>
+                        
+                        <!-- SSE 流测试 -->
+                        <div>
+                            <h3>📡 SSE 流 (Server-Sent Events)</h3>
+                            <div class="status disconnected" id="sseStatus">未连接</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="sseProgress"></div>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <button class="btn" onclick="startSseStream()" id="sseStartBtn">开始 SSE 流</button>
+                                <button class="btn btn-danger" onclick="stopSseStream()" id="sseStopBtn" disabled>停止流</button>
+                            </div>
+                            <div class="event-log" id="sseLog"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 全局变量
+        let jsonReader = null;
+        let sseEventSource = null;
+        let jsonSessionId = null;
+        let sseSessionId = null;
+        let jsonStartTime = 0;
+        let sseStartTime = 0;
+        
+        // 性能统计
+        let metrics = {
+            totalRequests: 0,
+            successfulRequests: 0,
+            totalResponseTime: 0,
+            activeStreams: 0
+        };
+        
+        // 工具函数
+        function generateSessionId() {
+            return 'flux_test_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        }
+        
+        function formatTime(timestamp) {
+            return new Date(timestamp).toLocaleTimeString();
+        }
+        
+        function updateStatus(type, status, message) {
+            const statusEl = document.getElementById(type + 'Status');
+            statusEl.className = `status ${status}`;
+            statusEl.textContent = message;
+        }
+        
+        function updateProgress(type, percentage) {
+            const progressEl = document.getElementById(type + 'Progress');
+            progressEl.style.width = percentage + '%';
+        }
+        
+        function addLogEntry(type, eventType, message, data = null) {
+            const logEl = document.getElementById(type + 'Log');
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${eventType}`;
+            
+            let content = `<span class="timestamp">${formatTime(Date.now())}</span>`;
+            content += `<strong>[${eventType.toUpperCase()}]</strong> ${message}`;
+            
+            if (data) {
+                content += `<br><pre style="margin: 5px 0; font-size: 11px; background: rgba(0,0,0,0.05); padding: 5px; border-radius: 3px;">${JSON.stringify(data, null, 2)}</pre>`;
+            }
+            
+            entry.innerHTML = content;
+            logEl.appendChild(entry);
+            logEl.scrollTop = logEl.scrollHeight;
+        }
+        
+        function updateMetrics() {
+            document.getElementById('totalRequests').textContent = metrics.totalRequests;
+            document.getElementById('avgResponseTime').textContent = 
+                metrics.totalRequests > 0 ? Math.round(metrics.totalResponseTime / metrics.totalRequests) + 'ms' : '0ms';
+            document.getElementById('successRate').textContent = 
+                metrics.totalRequests > 0 ? Math.round((metrics.successfulRequests / metrics.totalRequests) * 100) + '%' : '0%';
+            document.getElementById('activeStreams').textContent = metrics.activeStreams;
+        }
+        
+        function clearMetrics() {
+            metrics = {
+                totalRequests: 0,
+                successfulRequests: 0,
+                totalResponseTime: 0,
+                activeStreams: 0
+            };
+            updateMetrics();
+        }
+        
+        // JSON 流处理
+        async function startJsonStream() {
+            if (jsonReader) {
+                console.warn('JSON stream already active');
+                return;
+            }
+            
+            jsonSessionId = generateSessionId();
+            jsonStartTime = Date.now();
+            metrics.totalRequests++;
+            metrics.activeStreams++;
+            updateMetrics();
+            
+            updateStatus('json', 'connecting', '正在连接...');
+            addLogEntry('json', 'system', `开始 JSON 流连接 - 会话ID: ${jsonSessionId}`);
+            
+            document.getElementById('jsonStartBtn').disabled = true;
+            document.getElementById('jsonStopBtn').disabled = false;
+            
+            try {
+                const message = document.getElementById('message').value;
+                const userId = document.getElementById('userId').value;
+                const chainType = document.getElementById('chainType').value;
+                
+                const params = new URLSearchParams({
+                    message: message,
+                    sessionId: jsonSessionId,
+                    userId: userId,
+                    chainType: chainType
+                });
+                
+                const response = await fetch(`/ai/flux/query?${params}`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/x-ndjson',
+                        'Cache-Control': 'no-cache'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                updateStatus('json', 'connected', '已连接 - 正在接收数据');
+                addLogEntry('json', 'system', '连接成功，开始接收事件流');
+                
+                jsonReader = response.body.getReader();
+                const decoder = new TextDecoder();
+                
+                while (true) {
+                    const { done, value } = await jsonReader.read();
+                    
+                    if (done) {
+                        addLogEntry('json', 'completed', '流结束');
+                        break;
+                    }
+                    
+                    const chunk = decoder.decode(value, { stream: true });
+                    const lines = chunk.split('\n');
+                    
+                    for (const line of lines) {
+                        if (line.trim()) {
+                            try {
+                                const event = JSON.parse(line);
+                                handleJsonEvent(event);
+                            } catch (e) {
+                                console.warn('Failed to parse JSON line:', line, e);
+                            }
+                        }
+                    }
+                }
+                
+                metrics.successfulRequests++;
+                metrics.totalResponseTime += Date.now() - jsonStartTime;
+                
+            } catch (error) {
+                console.error('JSON stream error:', error);
+                addLogEntry('json', 'error', `连接错误: ${error.message}`);
+                updateStatus('json', 'disconnected', '连接失败');
+            } finally {
+                stopJsonStream();
+            }
+        }
+        
+        function handleJsonEvent(event) {
+            const eventType = event.eventType || 'unknown';
+            
+            switch (eventType) {
+                case 'STEP_STARTED':
+                    addLogEntry('json', 'step-started', `步骤开始: ${event.stepName}`);
+                    break;
+                case 'STEP_COMPLETED':
+                    addLogEntry('json', 'step-completed', `步骤完成: ${event.stepName}`);
+                    break;
+                case 'STEP_FAILED':
+                    addLogEntry('json', 'step-failed', `步骤失败: ${event.stepName} - ${event.error}`);
+                    break;
+                case 'PROGRESS':
+                    const percentage = event.progressPercentage || 0;
+                    updateProgress('json', percentage);
+                    addLogEntry('json', 'progress', `进度更新: ${percentage.toFixed(1)}% - ${event.message}`);
+                    break;
+                case 'DATA':
+                    addLogEntry('json', 'data', `接收数据: ${event.stepName}`, event.data);
+                    break;
+                case 'COMPLETED':
+                    addLogEntry('json', 'completed', `处理完成: ${event.message}`);
+                    updateProgress('json', 100);
+                    updateStatus('json', 'connected', '处理完成');
+                    break;
+                case 'ERROR':
+                    addLogEntry('json', 'error', `处理错误: ${event.error}`);
+                    updateStatus('json', 'disconnected', '处理失败');
+                    break;
+                default:
+                    addLogEntry('json', 'system', `未知事件: ${eventType}`, event);
+            }
+        }
+        
+        function stopJsonStream() {
+            if (jsonReader) {
+                jsonReader.cancel();
+                jsonReader = null;
+            }
+            
+            metrics.activeStreams = Math.max(0, metrics.activeStreams - 1);
+            updateMetrics();
+            
+            updateStatus('json', 'disconnected', '已断开连接');
+            addLogEntry('json', 'system', 'JSON 流已停止');
+            
+            document.getElementById('jsonStartBtn').disabled = false;
+            document.getElementById('jsonStopBtn').disabled = true;
+        }
+        
+        // SSE 流处理
+        function startSseStream() {
+            if (sseEventSource) {
+                console.warn('SSE stream already active');
+                return;
+            }
+            
+            sseSessionId = generateSessionId();
+            sseStartTime = Date.now();
+            metrics.totalRequests++;
+            metrics.activeStreams++;
+            updateMetrics();
+            
+            updateStatus('sse', 'connecting', '正在连接...');
+            addLogEntry('sse', 'system', `开始 SSE 流连接 - 会话ID: ${sseSessionId}`);
+            
+            document.getElementById('sseStartBtn').disabled = true;
+            document.getElementById('sseStopBtn').disabled = false;
+            
+            const message = document.getElementById('message').value;
+            const userId = document.getElementById('userId').value;
+            const chainType = document.getElementById('chainType').value;
+            
+            const params = new URLSearchParams({
+                message: message,
+                sessionId: sseSessionId,
+                userId: userId,
+                chainType: chainType
+            });
+            
+            sseEventSource = new EventSource(`/ai/flux/stream?${params}`);
+            
+            sseEventSource.onopen = function() {
+                updateStatus('sse', 'connected', '已连接 - 正在接收数据');
+                addLogEntry('sse', 'system', 'SSE 连接已建立');
+            };
+            
+            sseEventSource.onerror = function(error) {
+                console.error('SSE error:', error);
+                addLogEntry('sse', 'error', 'SSE 连接错误');
+                updateStatus('sse', 'disconnected', '连接错误');
+                stopSseStream();
+            };
+            
+            // 监听所有事件类型
+            const eventTypes = ['STEP_STARTED', 'STEP_COMPLETED', 'STEP_FAILED', 'PROGRESS', 'DATA', 'COMPLETED', 'ERROR', 'heartbeat'];
+            
+            eventTypes.forEach(eventType => {
+                sseEventSource.addEventListener(eventType, function(event) {
+                    try {
+                        const data = JSON.parse(event.data);
+                        handleSseEvent(eventType, data);
+                    } catch (e) {
+                        console.warn('Failed to parse SSE event data:', event.data, e);
+                    }
+                });
+            });
+            
+            // 通用消息处理
+            sseEventSource.onmessage = function(event) {
+                try {
+                    const data = JSON.parse(event.data);
+                    handleSseEvent('message', data);
+                } catch (e) {
+                    addLogEntry('sse', 'system', `原始消息: ${event.data}`);
+                }
+            };
+        }
+        
+        function handleSseEvent(eventType, data) {
+            switch (eventType) {
+                case 'STEP_STARTED':
+                    addLogEntry('sse', 'step-started', `步骤开始: ${data.stepName}`);
+                    break;
+                case 'STEP_COMPLETED':
+                    addLogEntry('sse', 'step-completed', `步骤完成: ${data.stepName}`);
+                    break;
+                case 'STEP_FAILED':
+                    addLogEntry('sse', 'step-failed', `步骤失败: ${data.stepName} - ${data.error}`);
+                    break;
+                case 'PROGRESS':
+                    const percentage = data.progressPercentage || 0;
+                    updateProgress('sse', percentage);
+                    addLogEntry('sse', 'progress', `进度更新: ${percentage.toFixed(1)}% - ${data.message}`);
+                    break;
+                case 'DATA':
+                    addLogEntry('sse', 'data', `接收数据: ${data.stepName}`, data.data);
+                    break;
+                case 'COMPLETED':
+                    addLogEntry('sse', 'completed', `处理完成: ${data.message}`);
+                    updateProgress('sse', 100);
+                    updateStatus('sse', 'connected', '处理完成');
+                    metrics.successfulRequests++;
+                    metrics.totalResponseTime += Date.now() - sseStartTime;
+                    updateMetrics();
+                    setTimeout(() => stopSseStream(), 2000); // 自动关闭
+                    break;
+                case 'ERROR':
+                    addLogEntry('sse', 'error', `处理错误: ${data.error}`);
+                    updateStatus('sse', 'disconnected', '处理失败');
+                    break;
+                case 'heartbeat':
+                    // 心跳不显示在日志中，但可以用于监控连接状态
+                    console.debug('SSE heartbeat received');
+                    break;
+                default:
+                    addLogEntry('sse', 'system', `事件: ${eventType}`, data);
+            }
+        }
+        
+        function stopSseStream() {
+            if (sseEventSource) {
+                sseEventSource.close();
+                sseEventSource = null;
+            }
+            
+            metrics.activeStreams = Math.max(0, metrics.activeStreams - 1);
+            updateMetrics();
+            
+            updateStatus('sse', 'disconnected', '已断开连接');
+            addLogEntry('sse', 'system', 'SSE 流已停止');
+            
+            document.getElementById('sseStartBtn').disabled = false;
+            document.getElementById('sseStopBtn').disabled = true;
+        }
+        
+        // 页面卸载时清理资源
+        window.addEventListener('beforeunload', function() {
+            stopJsonStream();
+            stopSseStream();
+        });
+        
+        // 初始化
+        updateMetrics();
+    </script>
+</body>
+</html> 

@@ -82,22 +82,6 @@ public class ConfigurationValidationService {
     private void validateLlmConfiguration(List<String> errors) {
         var llm = agentProperties.getLlm();
         
-        // 检查至少有一个API配置
-        boolean hasValidApi = false;
-        if (llm.getApi().getOpenai().getKey() != null && !llm.getApi().getOpenai().getKey().trim().isEmpty()) {
-            hasValidApi = true;
-        }
-        if (llm.getApi().getClaude().getKey() != null && !llm.getApi().getClaude().getKey().trim().isEmpty()) {
-            hasValidApi = true;
-        }
-        if (llm.getApi().getLocal().getEndpoint() != null && !llm.getApi().getLocal().getEndpoint().trim().isEmpty()) {
-            hasValidApi = true;
-        }
-        
-        if (!hasValidApi) {
-            errors.add("LLM配置: 至少需要配置一个有效的API（OpenAI、Claude或本地）");
-        }
-        
         // 验证重试配置合理性
         if (llm.getRetry().getMaxAttempts() > 5 && llm.getRetry().getDelay() < 500) {
             errors.add("LLM重试配置: 重试次数过多但延迟过短，可能导致频繁请求");
@@ -172,21 +156,11 @@ public class ConfigurationValidationService {
      */
     private void logConfigurationSummary() {
         logger.info("=== Agent配置摘要 ===");
-        logger.info("LLM配置: {}", getSafeConfigString(agentProperties.getLlm()));
+        logger.info("LLM配置: {}", agentProperties.getLlm());
         logger.info("知识源配置: {}", agentProperties.getKnowledge());
         logger.info("管道配置: {}", agentProperties.getPipeline());
         logger.info("MCP配置: {}", agentProperties.getMcp());
         logger.info("===================");
-    }
-
-    /**
-     * 安全的配置字符串（隐藏敏感信息）
-     */
-    private String getSafeConfigString(Object config) {
-        String configStr = config.toString();
-        // 替换可能的API密钥
-        return configStr.replaceAll("key='[^']*'", "key='***'")
-                       .replaceAll("key=\"[^\"]*\"", "key=\"***\"");
     }
 
     /**
