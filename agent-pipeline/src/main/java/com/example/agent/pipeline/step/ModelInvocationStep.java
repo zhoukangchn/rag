@@ -2,6 +2,8 @@ package com.example.agent.pipeline.step;
 
 import com.example.agent.core.dto.AgentContext;
 import com.example.agent.pipeline.template.AbstractPipelineStep;
+import com.example.agent.pipeline.client.LlmStreamingClient;
+import com.example.agent.pipeline.streaming.ProgressListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -42,13 +44,15 @@ public class ModelInvocationStep extends AbstractPipelineStep {
     
     private final WebClient webClient;
     private final ChatClient chatClient;
+    private final LlmStreamingClient llmStreamingClient;
     
     @Autowired
-    public ModelInvocationStep(ChatClient.Builder chatClientBuilder) {
+    public ModelInvocationStep(ChatClient.Builder chatClientBuilder, LlmStreamingClient llmStreamingClient) {
         this.webClient = WebClient.builder()
                 .codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(1024 * 1024))
                 .build();
         this.chatClient = chatClientBuilder.build();
+        this.llmStreamingClient = llmStreamingClient;
     }
     
     @Override
@@ -70,10 +74,19 @@ public class ModelInvocationStep extends AbstractPipelineStep {
                 return false;
             }
             
-            // 使用Spring AI ChatClient调用LLM
-            String response = callLLM(context, systemPrompt, userPrompt);
+            // 检查是否为流式处理
+            boolean isStreamingMode = isStreamingMode(context);
+            String response;
             
-            if (response == null) {
+            if (isStreamingMode) {
+                // 使用流式客户端
+                response = callLLMStreaming(context, systemPrompt, userPrompt);
+            } else {
+                // 使用Spring AI ChatClient调用LLM
+                response = callLLM(context, systemPrompt, userPrompt);
+            }
+            
+            if (response == null || response.isEmpty()) {
                 logger.error("模型调用失败，未返回响应");
                 return false;
             }
@@ -84,13 +97,14 @@ public class ModelInvocationStep extends AbstractPipelineStep {
             // 保存响应到上下文
             context.addExtensionProperty("llmResponse", processedResponse);
             context.addExtensionProperty("responseLength", processedResponse.length());
+            context.addExtensionProperty("streamingMode", isStreamingMode);
             
             // 记录执行时间
             long duration = System.currentTimeMillis() - startTime;
             recordExecutionTime(context, STEP_NAME, duration);
             
-            logger.info("模型调用完成 - 查询ID: {}, 响应长度: {}, 耗时: {}ms", 
-                    context.getQueryId(), processedResponse.length(), duration);
+            logger.info("模型调用完成 - 查询ID: {}, 响应长度: {}, 耗时: {}ms, 流式模式: {}", 
+                    context.getQueryId(), processedResponse.length(), duration, isStreamingMode);
             
             return true;
             
@@ -114,6 +128,109 @@ public class ModelInvocationStep extends AbstractPipelineStep {
     private String getUserPrompt(AgentContext context) {
         Object userPromptObj = context.getExtensionProperty("userPrompt");
         return userPromptObj instanceof String ? (String) userPromptObj : null;
+    }
+    
+    /**
+     * 检查是否为流式处理模式
+     */
+    private boolean isStreamingMode(AgentContext context) {
+        // 检查用户会话类型
+        String sessionId = context.getSessionId();
+        if (sessionId != null && sessionId.startsWith("stream")) {
+            return true;
+        }
+        
+        // 检查扩展属性
+        Object streamingFlag = context.getExtensionProperty("streamingEnabled");
+        if (streamingFlag instanceof Boolean) {
+            return (Boolean) streamingFlag;
+        }
+        
+        // 检查用户偏好
+        Map<String, Object> userPreferences = context.getUserPreferences();
+        if (userPreferences != null) {
+            Object streamingPref = userPreferences.get("streamingEnabled");
+            if (streamingPref instanceof Boolean) {
+                return (Boolean) streamingPref;
+            }
+        }
+        
+        return false;
+    }
+    
+    /**
+     * 使用流式客户端调用LLM
+     */
+    private String callLLMStreaming(AgentContext context, String systemPrompt, String userPrompt) {
+        try {
+            // 构建调用选项
+            Map<String, Object> options = new HashMap<>();
+            options.put("model", getModel(context));
+            options.put("maxTokens", getMaxTokens(context));
+            options.put("temperature", getTemperature(context));
+            
+            // 获取进度监听器
+            ProgressListener progressListener = getProgressListener(context);
+            
+            // 调用流式客户端
+            Mono<String> responseMono = llmStreamingClient.streamCall(systemPrompt, userPrompt, options, progressListener);
+            
+            // 阻塞获取结果（在实际应用中可能需要异步处理）
+            return responseMono.block(Duration.ofMillis(timeoutMillis));
+            
+        } catch (Exception e) {
+            logger.error("流式客户端调用异常", e);
+            return null;
+        }
+    }
+    
+    /**
+     * 获取进度监听器
+     */
+    private ProgressListener getProgressListener(AgentContext context) {
+        // 从上下文获取进度监听器
+        Object listenerObj = context.getExtensionProperty("progressListener");
+        if (listenerObj instanceof ProgressListener) {
+            return (ProgressListener) listenerObj;
+        }
+        
+        // 返回默认的空实现
+        return new ProgressListener() {
+            @Override
+            public void onStepStarted(String stepName) {
+                logger.debug("步骤开始: {}", stepName);
+            }
+            
+            @Override
+            public void onStepCompleted(String stepName) {
+                logger.debug("步骤完成: {}", stepName);
+            }
+            
+            @Override
+            public void onStepFailed(String stepName, String error) {
+                logger.warn("步骤失败: {} - {}", stepName, error);
+            }
+            
+            @Override
+            public void onProgress(String stepName, double percentage, String message) {
+                logger.debug("进度更新: {} - {}% - {}", stepName, percentage, message);
+            }
+            
+            @Override
+            public void onData(String stepName, Object data) {
+                logger.debug("数据接收: {} - {}", stepName, data);
+            }
+            
+            @Override
+            public void onCompleted(String message) {
+                logger.info("处理完成: {}", message);
+            }
+            
+            @Override
+            public void onError(String error) {
+                logger.error("处理错误: {}", error);
+            }
+        };
     }
     
     /**

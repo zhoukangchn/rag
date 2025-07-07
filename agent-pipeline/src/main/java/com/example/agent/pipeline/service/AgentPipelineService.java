@@ -175,6 +175,10 @@ public class AgentPipelineService {
             // 创建Agent上下文
             AgentContext agentContext = createAgentContext(query, "system", "stream", queryId, null);
             
+            // 将进度监听器添加到上下文中
+            agentContext.addExtensionProperty("progressListener", progressListener);
+            agentContext.addExtensionProperty("streamingEnabled", true);
+            
             // 获取处理链
             PipelineChain chain = getOrCreateChain("standard", agentContext);
             
@@ -197,6 +201,7 @@ public class AgentPipelineService {
             
         } catch (Exception e) {
             logger.error("流式处理异常 - 查询ID: {}", queryId, e);
+            progressListener.onError("处理失败: " + e.getMessage());
             
             long duration = System.currentTimeMillis() - startTime;
             return AgentProcessingResult.error(queryId, "处理失败: " + e.getMessage(), duration);

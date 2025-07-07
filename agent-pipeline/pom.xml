@@ -35,7 +35,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        
+            
         <!-- Spring AI -->
         <dependency>
             <groupId>org.springframework.ai</groupId>

@@ -6,10 +6,11 @@ import com.example.agent.pipeline.streaming.StreamingProgressListener;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class ChatController {
@@ -65,7 +66,100 @@ public class ChatController {
                         progressListener.onError("Processing failed: " + throwable.getMessage());
                     } else {
                         progressListener.onCompleted("Query processed successfully");
+                        // 发送最终结果
+                        progressListener.onData("final_result", result);
                     }
                 });
+    }
+    
+    /**
+     * 流式处理查询（POST版本，支持复杂参数）
+     */
+    @PostMapping("/ai/stream/chat")
+    public void streamChatPost(@RequestBody StreamChatRequest request) {
+        // 检查会话是否存在
+        if (!streamingService.hasConnection(request.getSessionId())) {
+            throw new IllegalArgumentException("Session not found: " + request.getSessionId());
+        }
+        
+        // 创建进度监听器
+        StreamingProgressListener progressListener = new StreamingProgressListener(streamingService, request.getSessionId());
+        
+        // 异步处理查询
+        agentPipelineService.processQueryAsync(request.getMessage(), progressListener)
+                .whenComplete((result, throwable) -> {
+                    if (throwable != null) {
+                        progressListener.onError("Processing failed: " + throwable.getMessage());
+                    } else {
+                        progressListener.onCompleted("Query processed successfully");
+                        progressListener.onData("final_result", result);
+                    }
+                });
+    }
+    
+    /**
+     * 获取流式处理状态
+     */
+    @GetMapping("/ai/stream/status")
+    public Map<String, Object> getStreamingStatus(@RequestParam(value = "sessionId") String sessionId) {
+        Map<String, Object> status = new HashMap<>();
+        status.put("sessionId", sessionId);
+        status.put("connected", streamingService.hasConnection(sessionId));
+        status.put("activeConnections", streamingService.getActiveConnectionCount());
+        status.put("timestamp", System.currentTimeMillis());
+        return status;
+    }
+    
+    /**
+     * 关闭流式连接
+     */
+    @PostMapping("/ai/stream/close")
+    public Map<String, Object> closeStreamingConnection(@RequestParam(value = "sessionId") String sessionId) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("sessionId", sessionId);
+        
+        if (streamingService.hasConnection(sessionId)) {
+            streamingService.closeConnection(sessionId);
+            result.put("closed", true);
+            result.put("message", "Connection closed successfully");
+        } else {
+            result.put("closed", false);
+            result.put("message", "Session not found or already closed");
+        }
+        
+        return result;
+    }
+    
+    /**
+     * 流式聊天请求类
+     */
+    public static class StreamChatRequest {
+        private String message;
+        private String sessionId;
+        private Map<String, Object> options;
+        
+        public String getMessage() {
+            return message;
+        }
+        
+        public void setMessage(String message) {
+            this.message = message;
+        }
+        
+        public String getSessionId() {
+            return sessionId;
+        }
+        
+        public void setSessionId(String sessionId) {
+            this.sessionId = sessionId;
+        }
+        
+        public Map<String, Object> getOptions() {
+            return options;
+        }
+        
+        public void setOptions(Map<String, Object> options) {
+            this.options = options;
+        }
     }
 }

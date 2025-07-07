@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent API 测试工具</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .response-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid #e9ecef;
+        }
+        .response-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #495057;
+        }
+        .response-body {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .status-success {
+            color: #28a745;
+        }
+        .status-error {
+            color: #dc3545;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .tab.active {
+            background-color: white;
+            border-bottom: 1px solid white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .flex-container {
+            display: flex;
+            gap: 20px;
+        }
+        .flex-item {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agent API 测试工具</h1>
+        
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('chat')">问答接口</div>
+            <div class="tab" onclick="showTab('knowledge')">知识检索</div>
+            <div class="tab" onclick="showTab('system')">系统接口</div>
+        </div>
+        
+        <!-- 问答接口测试 -->
+        <div id="chat" class="tab-content active">
+            <div class="section">
+                <h2>基础问答接口</h2>
+                <div class="form-group">
+                    <label for="chatMessage">消息内容:</label>
+                    <textarea id="chatMessage" placeholder="输入您的问题...">告诉我关于人工智能的知识</textarea>
+                </div>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <div class="form-group">
+                            <label for="chatUserId">用户ID:</label>
+                            <input type="text" id="chatUserId" value="test_user">
+                        </div>
+                    </div>
+                    <div class="flex-item">
+                        <div class="form-group">
+                            <label for="chatSessionId">会话ID:</label>
+                            <input type="text" id="chatSessionId" value="test_session">
+                        </div>
+                    </div>
+                </div>
+                <button onclick="testBasicChat()">发送请求</button>
+                <div class="response-container">
+                    <div class="response-header">响应结果:</div>
+                    <div id="chatResponse" class="response-body">点击发送请求查看响应...</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>高级问答接口</h2>
+                <div class="form-group">
+                    <label for="advancedMessage">消息内容:</label>
+                    <textarea id="advancedMessage" placeholder="输入您的问题...">请详细解释机器学习的工作原理</textarea>
+                </div>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <div class="form-group">
+                            <label for="advancedUserId">用户ID:</label>
+                            <input type="text" id="advancedUserId" value="test_user">
+                        </div>
+                    </div>
+                    <div class="flex-item">
+                        <div class="form-group">
+                            <label for="advancedSessionId">会话ID:</label>
+                            <input type="text" id="advancedSessionId" value="test_session">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="chainType">处理链类型:</label>
+                    <select id="chainType">
+                        <option value="standard">标准链</option>
+                        <option value="fast">快速链</option>
+                        <option value="enhanced">增强链</option>
+                    </select>
+                </div>
+                <button onclick="testAdvancedChat()">发送请求</button>
+                <div class="response-container">
+                    <div class="response-header">响应结果:</div>
+                    <div id="advancedResponse" class="response-body">点击发送请求查看响应...</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 知识检索接口测试 -->
+        <div id="knowledge" class="tab-content">
+            <div class="section">
+                <h2>知识检索测试</h2>
+                <div class="form-group">
+                    <label for="knowledgeQuery">查询内容:</label>
+                    <textarea id="knowledgeQuery" placeholder="输入检索关键词...">人工智能发展历史</textarea>
+                </div>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <div class="form-group">
+                            <label for="knowledgeUserId">用户ID:</label>
+                            <input type="text" id="knowledgeUserId" value="test_user">
+                        </div>
+                    </div>
+                    <div class="flex-item">
+                        <div class="form-group">
+                            <label for="knowledgeSessionId">会话ID:</label>
+                            <input type="text" id="knowledgeSessionId" value="test_session">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="retrievalType">检索类型:</label>
+                    <select id="retrievalType">
+                        <option value="vector">向量检索</option>
+                        <option value="database">数据库检索</option>
+                        <option value="api">API检索</option>
+                    </select>
+                </div>
+                <button onclick="testKnowledgeRetrieval()">执行检索</button>
+                <div class="response-container">
+                    <div class="response-header">检索结果:</div>
+                    <div id="knowledgeResponse" class="response-body">点击执行检索查看结果...</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 系统接口测试 -->
+        <div id="system" class="tab-content">
+            <div class="section">
+                <h2>系统状态</h2>
+                <button onclick="testSystemStatus()">获取系统状态</button>
+                <div class="response-container">
+                    <div class="response-header">系统状态:</div>
+                    <div id="systemStatusResponse" class="response-body">点击获取系统状态...</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>处理链信息</h2>
+                <button onclick="testChainsInfo()">获取处理链信息</button>
+                <div class="response-container">
+                    <div class="response-header">处理链信息:</div>
+                    <div id="chainsResponse" class="response-body">点击获取处理链信息...</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>统计信息管理</h2>
+                <button onclick="testResetStatistics()">重置统计信息</button>
+                <div class="response-container">
+                    <div class="response-header">操作结果:</div>
+                    <div id="resetResponse" class="response-body">点击重置统计信息...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab切换功能
+        function showTab(tabName) {
+            // 隐藏所有tab内容
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // 移除所有tab的active类
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // 显示选中的tab内容
+            document.getElementById(tabName).classList.add('active');
+            
+            // 给选中的tab添加active类
+            event.target.classList.add('active');
+        }
+        
+        // 基础问答接口测试
+        async function testBasicChat() {
+            const message = document.getElementById('chatMessage').value;
+            const userId = document.getElementById('chatUserId').value;
+            const sessionId = document.getElementById('chatSessionId').value;
+            
+            const requestData = {
+                message: message,
+                userId: userId,
+                sessionId: sessionId
+            };
+            
+            try {
+                const response = await fetch('/api/v1/agent/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                
+                const result = await response.json();
+                displayResponse('chatResponse', result, response.status);
+            } catch (error) {
+                displayError('chatResponse', error);
+            }
+        }
+        
+        // 高级问答接口测试
+        async function testAdvancedChat() {
+            const message = document.getElementById('advancedMessage').value;
+            const userId = document.getElementById('advancedUserId').value;
+            const sessionId = document.getElementById('advancedSessionId').value;
+            const chainType = document.getElementById('chainType').value;
+            
+            const requestData = {
+                message: message,
+                userId: userId,
+                sessionId: sessionId,
+                chainType: chainType,
+                options: {
+                    temperature: 0.7,
+                    maxTokens: 2000
+                }
+            };
+            
+            try {
+                const response = await fetch('/api/v1/agent/chat/advanced', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                
+                const result = await response.json();
+                displayResponse('advancedResponse', result, response.status);
+            } catch (error) {
+                displayError('advancedResponse', error);
+            }
+        }
+        
+        // 知识检索接口测试
+        async function testKnowledgeRetrieval() {
+            const query = document.getElementById('knowledgeQuery').value;
+            const userId = document.getElementById('knowledgeUserId').value;
+            const sessionId = document.getElementById('knowledgeSessionId').value;
+            const retrievalType = document.getElementById('retrievalType').value;
+            
+            const requestData = {
+                query: query,
+                userId: userId,
+                sessionId: sessionId,
+                retrievalParams: {
+                    limit: 10,
+                    threshold: 0.7
+                }
+            };
+            
+            try {
+                const response = await fetch(`/api/v1/agent/knowledge/${retrievalType}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                
+                const result = await response.json();
+                displayResponse('knowledgeResponse', result, response.status);
+            } catch (error) {
+                displayError('knowledgeResponse', error);
+            }
+        }
+        
+        // 系统状态接口测试
+        async function testSystemStatus() {
+            try {
+                const response = await fetch('/api/v1/agent/status');
+                const result = await response.json();
+                displayResponse('systemStatusResponse', result, response.status);
+            } catch (error) {
+                displayError('systemStatusResponse', error);
+            }
+        }
+        
+        // 处理链信息接口测试
+        async function testChainsInfo() {
+            try {
+                const response = await fetch('/api/v1/agent/chains');
+                const result = await response.json();
+                displayResponse('chainsResponse', result, response.status);
+            } catch (error) {
+                displayError('chainsResponse', error);
+            }
+        }
+        
+        // 重置统计信息接口测试
+        async function testResetStatistics() {
+            try {
+                const response = await fetch('/api/v1/agent/statistics/reset', {
+                    method: 'POST'
+                });
+                const result = await response.json();
+                displayResponse('resetResponse', result, response.status);
+            } catch (error) {
+                displayError('resetResponse', error);
+            }
+        }
+        
+        // 显示响应结果
+        function displayResponse(elementId, data, status) {
+            const element = document.getElementById(elementId);
+            const statusClass = status >= 200 && status < 300 ? 'status-success' : 'status-error';
+            
+            element.className = `response-body ${statusClass}`;
+            element.textContent = JSON.stringify(data, null, 2);
+        }
+        
+        // 显示错误信息
+        function displayError(elementId, error) {
+            const element = document.getElementById(elementId);
+            element.className = 'response-body status-error';
+            element.textContent = `错误: ${error.message}`;
+        }
+    </script>
+</body>
+</html> 

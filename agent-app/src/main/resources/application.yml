@@ -79,6 +79,43 @@ logging:
 
 # Agent自定义配置
 agent:
+  # LLM客户端配置
+  llm:
+    # 连接配置
+    connection:
+      timeout: 10000
+    read:
+      timeout: 60000
+    max-memory-size: 10485760
+    
+    # 重试配置
+    retry:
+      max-attempts: 3
+      delay: 1000
+    
+    # API配置
+    api:
+      openai:
+        endpoint: https://api.openai.com/v1/chat/completions
+        key: ${OPENAI_API_KEY:}
+      claude:
+        endpoint: https://api.anthropic.com/v1/messages
+        key: ${CLAUDE_API_KEY:}
+      local:
+        endpoint: http://localhost:11434/api/chat
+    
+    # 流式处理配置
+    stream:
+      endpoint: ${agent.llm.api.openai.endpoint}
+      timeout: 60000
+      buffer-size: 1024
+    
+    # 默认模型配置
+    default:
+      model: gpt-3.5-turbo
+      temperature: 0.7
+      max-tokens: 2000
+  
   knowledge:
     vector-store:
       enabled: true
